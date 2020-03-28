@@ -47,116 +47,97 @@ ll lcm(ll a,ll b)
 
 }
 
+const ll N=100005;
+ll nodes,edges;
+vector<pair<ll,ll> >adj[N];
+ll dis[N];
+ll parent[N];
 
-struct node
+void Dijkstra(ll src)
 {
-    int name,val;
-    bool operator <(const node &p) const
+    multiset<pair<ll,ll> >ms;
+
+    for(ll i=0;i<=nodes;i++)
+        dis[i] = LLONG_MAX;
+
+    dis[src]=0;
+    ms.insert({0,src});
+    while(!ms.empty())
     {
-        return p.val < val;
-    }
-};
+        pair<ll,ll> temp;
+        temp=*(ms.begin());
+        ms.erase(ms.begin());
 
-
-const int N=100005;
-vector<pair<int,int> >V[N];//
-int dis[N];
-bool vis[N];
-priority_queue<node>Q;
-map<int,int>previous;
-map<int,int>::iterator it;
-
-void Dijkstra(int s)
-{
-    memset(vis,0,sizeof(vis));
-    memset(dis,infinity,sizeof(dis));
-
-    dis[s]=0;
-    node get;
-    get.name=s;
-    get.val=0;
-    Q.push(get);
-
-    while(!Q.empty())
-    {
-        node temp=Q.top();
-        Q.pop();
-        int now=temp.name;
-        if(vis[now]) continue;
-        vis[now]=1;
-        for(int i=0;i<V[now].size();i++)
+        ll u=temp.second;
+        for(ll i=0;i<adj[u].size();i++)
         {
-            int x=V[now][i].ff;//node
-            int y=V[now][i].ss;//cost
-            if(dis[now]+y<dis[x])
+            ll v=adj[u][i].ss;
+            ll cost=adj[u][i].ff;
+            if(dis[v]>dis[u]+cost)
             {
-                previous[x]=now;
-                dis[x]=dis[now]+y;
-                get.name=x;
-                get.val=dis[x];
-                Q.push(get);
+                dis[v]=dis[u]+cost;
+                ms.insert({cost,v});
+                parent[v]=u;
             }
         }
     }
-    return;
-}
 
-void print(int s1,int s2)
-{
-    int target=s1;
-    vector<int>v;
-    for(;;)
-    {
-        v.pb(previous[s1]);
-        s1=previous[s1];
-        if(previous[s1]==s2)break;
-    }
-    reverse(v.begin(),v.end());
-    for(int i=0;i<v.size();i++)
-        cout<<v[i]<<" ";
-        cout<<target;
+
+
 
 
 }
-
-
-
-
-
-void print_path(int s1,int s2)//s1== to   s2==from
-{
-
-    if(s1==s2) return;
-    print_path(previous[s1],s2);//age ekdom matha porjonto jabe then print korte thakbe
-    cout<<s1<<" ";//previous[s1]//s1=4 3 5//prev[s1]=1 4 3
-}
-/* 1 4 3 5
-	 5 1
-	 3 1
-	 4 1
-	 1 1
-	 s1 s2*/
 
 int main()
 {
-    fast
-    int node,edge;
-    cin>>node>>edge;
-    for(int i=0;i<edge;i++)
+    cin>>nodes>>edges;
+    FOR(i,edges)
     {
-        int n1,n2,c;
-        cin>>n1>>n2>>c;
-        V[n1].push_back({n2,c});
-        V[n2].push_back({n1,c});
+        ll u,v,w;
+        cin>>u>>v>>w;
+        adj[u].push_back({w,v});
+        adj[v].push_back({w,u});
     }
     Dijkstra(1);
-    //cout<<dis[node]<<endl;
-    if(dis[node]<0)
+    if(dis[nodes]==LLONG_MAX)
     {
         cout<<"-1";
-        return 0;
     }
-    cout<<"1 ";//starting
-    print(node,1);
+    else
+        {
+            stack<ll>path;
+            for(ll current=nodes;current!=0;current=parent[current])
+                    path.push(current);
+            while(!path.empty())
+            {
+                cout<<path.top()<<" ";
+                path.pop();
+            }
+
+        }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

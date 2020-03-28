@@ -13,111 +13,71 @@ using namespace std;
 #define fWrite      freopen("out.txt", "w", stdout);//to write the output in a txt file
 #define fRead       freopen("in.txt", "r", stdin);
 #define infinity    0x3f3f3f3f
-//lower_bound == Shoman othoba prothom boro element ta return korbe//iterator return kore
-//upper bound mane first boro element return korbe
-//string s(n,'a');
 
-ll Digits(ll a)
+//CODEFORCES 20C
+const ll N = 100005;
+ll nodes, edges;
+vector<pair<ll, ll>> adj[N];
+ll dist[N];
+ll parent[N];
+
+void Dijkstra(ll src)
 {
-    return(floor(log10(a))+1);
-}
-ll BMod(ll B,ll P,ll M)
-{
-    ll R=1;
-    B=B%M;
-    while(P)
+    multiset<pair<ll, ll>> ms;
+
+    for (ll i = 0; i <= nodes; i++)
+        dist[i] = LLONG_MAX;
+
+    dist[src] = 0;
+    ms.insert({0, src});
+
+    while (!ms.empty())
     {
-        if(P&1)
-            R=(R*B)%M;
-        P >>= 1;
-        B=(B*B)%M;
-    }
-    return R;
-}
-ll gcd(ll a, ll b)
-{
-    if (b == 0)
-        return a;
-    return gcd(b, a % b);
+        pair<ll, ll> temp;
+        temp = *(ms.begin());
+        ms.erase(ms.begin());
 
-}
-ll lcm(ll a,ll b)
-{
-    return a*b/gcd(a,b);
-
-}
-
-
-struct node
-{
-    int name,val;
-    bool operator <(const node &p) const
-    {
-        return p.val < val;
-    }
-};
-
-
-const int N=100005;
-vector<pair<int,int> >V[N];//
-int dis[N];
-bool vis[N];
-priority_queue<node>Q;
-
-void Dijkstra(int s)
-{
-    memset(vis,0,sizeof(vis));
-    memset(dis,infinity,sizeof(dis));
-
-    dis[s]=0;
-    node get;
-    get.name=s;
-    get.val=0;
-    Q.push(get);
-
-    while(!Q.empty())
-    {
-        node temp=Q.top();
-        Q.pop();
-        int now=temp.name;
-        if(vis[now]) continue;
-        vis[now]=1;
-        for(int i=0;i<V[now].size();i++)
+        ll u = temp.second;
+        for(int i=0;i<adj[u].size();i++)
         {
-            int x=V[now][i].ff;//node
-            int y=V[now][i].ss;//cost
-            if(dis[now]+y<dis[x])
+            ll v = adj[u][i].second;
+            ll cost = adj[u][i].first;
+
+            if (dist[v] > dist[u] + cost)
             {
-                dis[x]=dis[now]+y;
-                get.name=x;
-                get.val=dis[x];
-                Q.push(get);
+                dist[v] = dist[u] + cost;
+                ms.insert({cost,v});
+                parent[v] = u;// for keeping the path
             }
         }
     }
-    return;
 }
-
-void print_path(int s1,int s2)//s1== to   s2==from
-{
-
-    if(s1==s2) return;
-    print_path(previous[s1],s2);//age ekdom matha porjonto jabe then print korte thakbe
-    cout<<s1<<" ";//previous[s1]//s1=4 3 5//prev[s1]=1 4 3 //ans=1 4 3 5
-}
-
 
 int main()
 {
-    fast
-    int node,edge;
-    cin>>node>>edge;
-    for(int i=0;i<edge;i++)
+    cin >> nodes >> edges;
+    for (ll i = 0; i < edges; i++)
     {
-        int n1,n2,c;
-        cin>>n1>>n2>>c;
-        V[n1].push_back({n2,c});
-        V[n2].push_back({n1,c});
+        ll u, v, w;
+        cin >> u >> v >> w;
+        adj[u].push_back({w, v});
+        adj[v].push_back({w, u});
     }
-    Dijkstra();
+
+    Dijkstra(1);
+    stack<ll> path;
+
+    if (dist[nodes] == LLONG_MAX)
+        cout << -1;
+    else
+    {
+        for (ll current = nodes; current != 0; current = parent[current])
+            path.push(current);
+        while (!path.empty())
+        {
+            cout << path.top() << " ";
+            path.pop();
+        }
+    }
+    cout << endl;
 }
