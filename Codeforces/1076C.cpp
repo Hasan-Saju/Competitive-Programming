@@ -53,4 +53,21 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int d;
+        cin>>d;
+
+        double D=d*d-4*d;
+        if(D<0)cout<<"N"<<endl;
+        else
+        {
+            double b= (double)(d + sqrt(D))/2;
+            double a=(double)d-b;
+            cout<<"Y"<<" "<<SP(9)<<a<<" "<<b<<endl;
+        }
+
+    }
 }

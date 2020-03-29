@@ -14,7 +14,6 @@ using namespace std;
 #define fRead       freopen("in.txt", "r", stdin);
 #define asi         cout<<"Check"<<endl;
 #define bye         return 0
-#define ok          cout<<"OK"<<endl;
 //lower_bound == Shoman othoba prothom boro element ta return korbe//iterator return kore
 //upper bound mane first boro element return korbe
 //string s(n,'a');
@@ -53,4 +52,29 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int n;
+    cin>>n;
+    vi v,even,odd;
+
+    FOR(i,n)
+    {
+        int x;
+        cin>>x;
+        v.pb(x);
+    }
+    sort(v.begin(),v.end());
+    for(int i=0;i<v.size();i++)
+    {
+        if(!i%2) even.pb(v[i]);
+        else odd.pb(v[i]);
+    }
+    sort(odd.begin(),odd.end(),greater<int>());
+    FOR(i,even.size())
+    cout<<even[i]<<" ";
+    FOR(i,odd.size())
+   // cout<<odd[i]<<" ";
+
+
+
 }
+

@@ -53,4 +53,20 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int d;
+        cin>>d;
+     
+        double D=d*d-4*d;
+        if(D==0 or D<0)cout<<"-1";
+        else
+        {
+            double b= (double)(d + sqrt(D))/2;
+            double a=()
+        }
+
+    }
 }

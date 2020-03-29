@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include<cmath>
 using namespace std;
 #define ll          long long
 #define pb          push_back
@@ -15,6 +16,8 @@ using namespace std;
 #define asi         cout<<"Check"<<endl;
 #define bye         return 0
 #define ok          cout<<"OK"<<endl;
+#define M_PI         3.14159265358979323846264338328
+
 //lower_bound == Shoman othoba prothom boro element ta return korbe//iterator return kore
 //upper bound mane first boro element return korbe
 //string s(n,'a');
@@ -53,4 +56,14 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int n,r;
+    double R;
+    cin>>n>>r;
+
+    R=(double)r*sin(M_PI/n);
+    R=(double)R/(1-sin(M_PI/n));
+
+    cout<<SP(7)<<R;
+
+
 }
