@@ -53,5 +53,35 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,ans=0;
+        cin>>n;
+        set<int>sett;
+        FOR(i,n)
+        {
+            int x;
+            cin>>x;
+            sett.insert(x);
+        }
+        while(!sett.empty())
+        {
+           int x=*(sett.rbegin());
+            sett.erase(x);
+            if(x%2==0)
+            {
+                x/=2;
+                sett.insert(x);
+                ans++;
+            }
 
+        }
+        cout<<ans<<endl;
+
+
+
+    }
 }
+

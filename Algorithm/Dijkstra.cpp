@@ -19,7 +19,7 @@ const ll N = 100005;
 ll nodes, edges;
 vector<pair<ll, ll>> adj[N];
 ll dist[N];
-ll parent[N];
+ll parent[N];//to print the path of dijkstra
 
 void Dijkstra(ll src)
 {

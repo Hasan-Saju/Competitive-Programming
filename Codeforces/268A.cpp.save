@@ -53,5 +53,25 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
-
+    int n;
+    cin>>n;
+    vector<pair<int,int> >v;
+    FOR(i,n)
+    {
+        int x,y;
+        cin>>x>>y;
+        v.pb(mp(x,y));
+    }
+    
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+         if(v[i].ff==v[j].ss or v[j].ff)kount++
+            
+        }
+    }
+    
+    
 }
+

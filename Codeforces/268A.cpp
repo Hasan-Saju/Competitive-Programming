@@ -21,18 +21,18 @@ using namespace std;
 
 ll Digits(ll a)
 {
-    return(floor(log10(a))+1);
+    return(floor(log10(a)) + 1);
 }
-ll BMod(ll B,ll P,ll M)
+ll BMod(ll B, ll P, ll M)
 {
-    ll R=1;
-    B=B%M;
+    ll R = 1;
+    B = B % M;
     while(P)
     {
-        if(P&1)
-            R=(R*B)%M;
+        if(P & 1)
+            R = (R * B) % M;
         P >>= 1;
-        B=(B*B)%M;
+        B = (B * B) % M;
     }
     return R;
 }
@@ -43,9 +43,9 @@ ll gcd(ll a, ll b)
     return gcd(b, a % b);
 
 }
-ll lcm(ll a,ll b)
+ll lcm(ll a, ll b)
 {
-    return a*b/gcd(a,b);
+    return a * b / gcd(a, b);
 
 }
 
@@ -53,5 +53,30 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int n, kount = 0;
+    cin >> n;
+    vector<pair<int, int> >v;
+    FOR(i, n)
+    {
+        int x, y;
+        cin >> x >> y;
+        v.pb(mp(x, y));
+    }
+
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = i + 1; j < n; j++)
+        {
+            if(v[i].ff == v[j].ss and v[j].ff == v[i].ss)
+                kount += 2;
+            else if(v[i].ff == v[j].ss or v[j].ff == v[i].ss)
+                kount++;
+
+        }
+    }
+
+    cout << kount;
+
 
 }
+

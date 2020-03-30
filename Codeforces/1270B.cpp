@@ -53,5 +53,31 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+       vi v;
+        int n,interest=0;
+        cin>>n;
+        int l,r;
 
+        int x;
+            cin>>x;
+            v.pb(x);
+        for(int i=1;i<n;i++)
+        {
+            int x;
+            cin>>x;
+            v.pb(x);
+            if(abs(v[i-1]-v[i])>=2)
+            {
+                l=min(i,i+1);
+                r=max(i,i+1);
+                interest=1;
+            }
+        }
+        if(!interest)cout<<"nO"<<endl;
+        else cout<<"yEs\n"<<l<<" "<<r<<endl;
+}
 }

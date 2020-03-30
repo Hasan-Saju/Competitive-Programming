@@ -3,8 +3,8 @@ using namespace std;
 #define ll          long long
 #define pb          push_back
 #define mp          make_pair
-#define ff          first
-#define ss          second
+//#define ff          first
+//#define ss          second
 #define vi          vector<int>
 #define si          set<int>
 #define FOR(i,n)    for(int i=0;i<n;i++)
@@ -49,9 +49,62 @@ ll lcm(ll a,ll b)
 
 }
 
+const int N=100005;
+int nodes,edges;
+vector<pair<int,int> >V[N];
+int dis[N];
+
+void Dijkstra(int src)
+{
+    multiset<pair<int,int> > ms;
+    for(int i=0;i<=nodes;i++)
+        dis[i]=INT_MAX;
+
+    dis[src]=0;
+    ms.insert({0,src});
+
+    while(!ms.empty())
+    {
+        pair< int,int > temp;
+        temp = *(ms.begin());
+        ms.erase(ms.begin());
+
+        int u=temp.second;
+
+        for(int i=0;i<V[u].size();i++)
+        {
+            int cost=V[u][i].first;
+            int v=V[u][i].second;
+
+            if(dis[v]>dis[u]+cost)
+            {
+                dis[v]=dis[u]+cost;
+                ms.insert({cost,v});
+            }
+        }
+    }
+}
 
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    for(int q=1;q<=t;q++)
+    {
+        int neww,d;
+        cin>>nodes>>edges>>neww>>d;
+        FOR(i,edges+neww)
+        {
+            int e,f,c;
+            cin>>e>>f>>c;
+            V[e].push_back({c,f});
+        }
 
+        Dijkstra(0);
+
+        if(dis[nodes-1]==INT_MAX)cout<<"Case "<<q<<": "<<"Impossible"<<endl;
+       else cout<<"Case "<<q<<": "<<dis[nodes-1]<<endl;
+    }
 }
+
