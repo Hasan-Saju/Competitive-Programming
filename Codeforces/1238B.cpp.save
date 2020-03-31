@@ -21,18 +21,18 @@ using namespace std;
 
 ll Digits(ll a)
 {
-    return(floor(log10(a))+1);
+    return(floor(log10(a)) + 1);
 }
-ll BMod(ll B,ll P,ll M)
+ll BMod(ll B, ll P, ll M)
 {
-    ll R=1;
-    B=B%M;
+    ll R = 1;
+    B = B % M;
     while(P)
     {
-        if(P&1)
-            R=(R*B)%M;
+        if(P & 1)
+            R = (R * B) % M;
         P >>= 1;
-        B=(B*B)%M;
+        B = (B * B) % M;
     }
     return R;
 }
@@ -43,15 +43,52 @@ ll gcd(ll a, ll b)
     return gcd(b, a % b);
 
 }
-ll lcm(ll a,ll b)
+ll lcm(ll a, ll b)
 {
-    return a*b/gcd(a,b);
+    return a * b / gcd(a, b);
 
 }
 
 
 int main()
 {
-    fast
+    //fast
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        int n, c;
+        cin >> n >> c;
+        si s;
+        FOR(i, n)
+        {
+            int x;
+            cin >> x;
+            s.insert(x);
+        }
+        int ans = 0, cumm = 0;
+
+        while(!s.empty())
+        {
+            auto it = s.end();
+            it--;
+            cout << *it << " "<<cumm<<" "<<ans<<endl;
+            s.erase(it);
+            ans++;
+
+            cumm += c;
+
+             if(s.empty())
+                break;
+
+            while((*(s.begin())) - cumm <= 0)
+                s.erase(s.begin());
+        }
+        cout <<endl<< ans << endl;
+        s.clear();
+
+
+    }
 
 }
+

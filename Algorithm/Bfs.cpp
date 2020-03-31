@@ -10,6 +10,7 @@ void bfs(int s)
 {
     memset(vis,0,sizeof(vis));
     vis[s]=1;
+    dis[0]=0;
     queue<int>Q;
     Q.push(s);
     while(!Q.empty())

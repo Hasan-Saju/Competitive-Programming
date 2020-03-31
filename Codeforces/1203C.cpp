@@ -49,9 +49,37 @@ ll lcm(ll a,ll b)
 
 }
 
+ll divisor(ll n)
+{
+    set<ll>s;
+
+    for(ll i=1;i<sqrt(n)+1;i++)
+    {
+        if(n%i==0)
+            {
+                s.insert(i);
+                s.insert(n/i);
+            }
+    }
+    return s.size();
+
+}
 
 int main()
 {
     fast
+    ll n;
+    cin>>n;
+
+    ll x,g=0;
+
+    for(ll i=0;i<n;i++)
+    {
+        cin>>x;
+        g=gcd(g,x);
+    }
+
+    cout<<divisor(g);
 
 }
+

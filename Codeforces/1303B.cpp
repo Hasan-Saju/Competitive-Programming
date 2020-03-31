@@ -48,10 +48,42 @@ ll lcm(ll a,ll b)
     return a*b/gcd(a,b);
 
 }
+int gw,bw;
+void workDiv(int n)
+{
+
+    if(n%2!=0)gw=(n/2)+1;
+    else gw=n/2;
+    bw=n/2;
+
+}
+
+workDay(int gw,int bw)
+{
+    ug=max(gw,g);
+    gw=gw-max(gw,g)
+    ub=max(bw,b);
+    bw=bw-max(bw,b);
+}
+
 
 
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,g,b;
+        cin>>n>>g>>b;
+        workDiv(n);
+
+        workDay(gw,bw);
+
+
+
+    }
 
 }
+

@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 using namespace std;
 #define ll          long long
@@ -14,7 +15,7 @@ using namespace std;
 #define fRead       freopen("in.txt", "r", stdin);
 #define asi         cout<<"Check"<<endl;
 #define bye         return 0
-#define ok          cout<<"OK"<<endl
+#define ok          cout<<"OK"<<endl;
 //lower_bound == Shoman othoba prothom boro element ta return korbe//iterator return kore
 //upper bound mane first boro element return korbe
 //string s(n,'a');
@@ -49,9 +50,34 @@ ll lcm(ll a,ll b)
 
 }
 
+void ans(ll n)
+{
+    string str= to_string(n);
+    string str2=str;
+    cout<<str<<" "<<str2;
+
+    str.erase(str.begin()+str.size());
+    str2.erase(str2.begin()+str.size()-1);
+
+    ll l=stoi(str);
+    ll lb=stoi(str2);
+
+    cout<<l<<" "<<lb;
+
+
+    cout<<min(l,lb);
+
+}
 
 int main()
 {
-    fast
+    //fast
 
+    ll n;
+    cin>>n;
+    if(n>0)cout<<n;
+    else
+    {
+        ans(n);
+    }
 }
