@@ -53,4 +53,31 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int n;
+    cin>>n;
+    int prev=0,x,kount=1,flag=0;
+    vi v,sec;
+
+    for(int i=0;i<n;i++)
+    {
+        cin>>x;
+        v.pb(x);
+        sec.pb(x);
+    }
+    sort(sec.begin(),sec.end());
+    
+   for(int i=0;i<n;i++)
+   {
+       if(v[i]!=sec[i])flag=1;
+   }
+   if(!flag)cout<<n;
+   else
+   {
+       
+       
+       
+       
+       
+   }
 }
+

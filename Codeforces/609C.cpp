@@ -53,4 +53,50 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int n;
+    cin>>n;
+
+    int x,sum=0,mid,bmid,maxx=0,minn=0,i;
+    int flag=0;
+    vi v;
+
+    FOR(i,n)
+    {
+        cin>>x;
+        v.pb(x);
+        sum+=x;
+    }
+
+    if(sum%n==0)
+    {
+        mid=sum/n;
+
+        for(i=0;i<v.size();i++)
+        {
+            if(v[i]<mid)minn+=abs(v[i]-mid);
+            else if(v[i]>mid)maxx+=abs(v[i]-mid);
+        }
+        cout<<max(maxx,minn);
+
+    }
+    else
+    {
+        mid=sum/n;
+        bmid=mid+1;
+         for(i=0;i<v.size();i++)
+         {
+             if(v[i]!=mid and v[i]!=bmid){flag=1;}
+            if(v[i]>bmid)maxx+=abs(bmid-v[i]);
+             else if(v[i]<mid)minn+=abs(mid-v[i]);
+
+         }
+
+         if(!flag)cout<<"0";
+         else cout<<max(maxx,minn);
+        // cout<<maxx<<minn;
+    }
+
+
+
 }
+

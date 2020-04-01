@@ -49,8 +49,27 @@ ll lcm(ll a,ll b)
 
 }
 
+void ans(string s)
+{
+    bitset<6>b(s);
+    cout<<b.to_ulong();
+}
+
 
 int main()
 {
     fast
+    int x;
+    cin>>x;
+    bitset<6>b(x);
+    string binary=b.to_string();
+
+    swap(binary[1],binary[5]);
+    swap(binary[2],binary[3]);
+
+    ans(binary);
+
+//    //bitset<6>b(binary);
+//    cout<<b.to_ulong;
 }
+

@@ -53,4 +53,9 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    string s;
+    cin>>s;
+    int x=s[6];
+    cout<<x%2;
 }
+

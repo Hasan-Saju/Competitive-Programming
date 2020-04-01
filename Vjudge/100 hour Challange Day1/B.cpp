@@ -53,4 +53,29 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int n,m,i,x,j;
+    cin>>n>>m;
+
+    int ara[n];
+    memset(ara,0,sizeof(ara));
+
+    for(i=0;i<n;i++)
+    {
+        cin>>x;
+        ara[x]++;
+    }
+
+    int ans=0;
+
+    for(i=1;i<=m;i++)
+    {
+        for(j=i+1;j<=m;j++)
+        {
+            ans+=ara[i]*ara[j];
+        }
+    }
+
+    cout<<ans;
+
 }
+

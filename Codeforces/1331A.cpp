@@ -53,4 +53,6 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    cout<<"NO";
 }
+

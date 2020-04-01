@@ -53,4 +53,15 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int x;
+    cin>>x;
+    bitset<6>b(x);
+    string binary=b.to_string();
+
+    swap(binary[1],binary[5]);
+    swap(binary[2],binary[3]);
+    
+    bitset<2>b(binary);
+    cout<<
 }
+
