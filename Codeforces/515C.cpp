@@ -12,7 +12,7 @@ using namespace std;
 #define SP(x)       fixed<<setprecision(x)
 #define fWrite      freopen("out.txt", "w", stdout);//to write the output in a txt file
 #define fRead       freopen("in.txt", "r", stdin);
-#define asi         cout<<"Check"<<endl
+#define asi         cout<<"Check"<<endl;
 #define bye         return 0
 #define ok          cout<<"OK"<<endl
 //lower_bound == Shoman othoba prothom boro element ta return korbe//iterator return kore
@@ -53,4 +53,36 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int n;
+    cin>>n;
+
+    string s;
+    cin>>s;
+    string ara[10];
+
+    ara[0]="bad";
+    ara[1]="bad";
+    ara[2]="2";
+    ara[3]="3";
+    ara[4]="322";
+    ara[5]="5";
+    ara[6]="53";
+    ara[7]="7";
+    ara[8]="7222";
+    ara[9]="7332";
+
+
+
+
+    string ans="";
+
+    for(int i=0;i<n;i++)
+    {
+        int x=s[i]-'0';
+        if(ara[x]!="bad")
+            ans+=ara[x];
+    }
+    sort(ans.begin(),ans.end(),greater<int>());
+    cout<<ans;
 }
+

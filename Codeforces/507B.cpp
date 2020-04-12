@@ -12,7 +12,7 @@ using namespace std;
 #define SP(x)       fixed<<setprecision(x)
 #define fWrite      freopen("out.txt", "w", stdout);//to write the output in a txt file
 #define fRead       freopen("in.txt", "r", stdin);
-#define asi         cout<<"Check"<<endl
+#define asi         cout<<"Check"<<endl;
 #define bye         return 0
 #define ok          cout<<"OK"<<endl
 //lower_bound == Shoman othoba prothom boro element ta return korbe//iterator return kore
@@ -53,4 +53,13 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    ll r,x,y,xp,yp;
+    cin>>r>>x>>y>>xp>>yp;
+    double dis=sqrt((abs(xp-x)*abs(xp-x))+(abs(yp-y)*abs(yp-y)));
+
+     dis=ceil(dis);
+    double ans=ceil((double)dis/(2*r));
+
+     cout<<ans;
 }
+
