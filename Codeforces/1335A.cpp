@@ -53,8 +53,14 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
-    vector<int>V[10];
-    V[1].pb(2);
-    V[1].pb(4);
-    
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll x,ans;
+        cin>>x;
+        if(x%2==0)cout<<x/2-1<<endl;
+        else cout<<x/2<<endl;
+    }
+
 }

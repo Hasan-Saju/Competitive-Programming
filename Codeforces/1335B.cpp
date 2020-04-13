@@ -53,8 +53,60 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
-    vector<int>V[10];
-    V[1].pb(2);
-    V[1].pb(4);
-    
+    int t;
+    cin>>t;
+    string alp="abcdefghijklmnopqrstuvwxyz";
+
+    int total;
+    int siz;
+    int un;
+    int extra;
+
+    while(t--)
+    {
+
+        cin>>total>>siz>>un;
+        string ans="";
+
+        int round;
+        round=total/siz;
+
+        while(round--)
+        {
+        string sub=alp.substr(0,un);//cout<<sub<<endl;
+        ans+=sub;
+
+        extra=siz-un;
+        string ex(extra,'a');
+        ans+=ex;
+
+       // cout<<ans<<" ";
+        }
+
+        extra=total%siz;
+
+        int exun=min(extra,un);
+
+        string sub=alp.substr(0,exun);
+        //
+        ans+=sub;
+
+        extra=extra-exun;
+        if(extra>0)
+        {
+             string ex(extra,'a');
+            ans+=ex;
+
+        }
+
+
+        cout<<ans<<endl;
+
+
+
+
+    }
+
 }
+
+

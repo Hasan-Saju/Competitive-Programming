@@ -53,8 +53,40 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
-    vector<int>V[10];
-    V[1].pb(2);
-    V[1].pb(4);
-    
+    int t;
+    cin>>t;
+    while(t--)
+    {
+      string s[9];
+    char c;
+    for(int i=0;i<9;i++)
+    {
+        string temp;
+        cin>>temp;
+        s[i]=temp;
+
+    }
+    //cout<<s[1][1];
+    s[0][6]=s[0][5];
+    s[1][1]=s[1][0];
+    s[2][5]=s[2][8];
+    s[3][8]=s[3][5];
+    s[4][2]=s[4][0];
+    s[5][4]=s[5][7];
+    s[6][7]=s[6][6];
+    s[7][0]=s[7][1];
+    s[8][3]=s[8][2];
+
+    //cout<<s[0][6];
+
+    for(int i=0;i<9;i++)
+    {
+        cout<<s[i]<<endl;
+    }
+    for(int i=0;i<9;i++)
+        s[i].clear();
+
+    }
+
 }
+
