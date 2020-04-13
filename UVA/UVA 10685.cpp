@@ -36,11 +36,11 @@ int Find(int representative)
         return representative;
     }
 
-    else Find(parent[representative]);
+    else return Find(parent[representative]);
 
 }
 
-int Union(int a,int b)
+void Union(int a,int b)
 {
     int u=Find(a);
     int v=Find(b);
