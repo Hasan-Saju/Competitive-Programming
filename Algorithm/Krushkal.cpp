@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#define MAXN 100005;
+#define MAXN 100005
 
 using namespace std;
 
@@ -34,7 +34,7 @@ int mst(int n)//n is for number of node
             pr[u] = v;
             kount++;
             s += e[i].w;
-            if (kount == n - 1)
+            if (kount == n - 1) //tree te n node and n-1 edge thake
                 break;
         }
     }

@@ -26,15 +26,15 @@ int mst(int n)//n is for number of node
     for (int i = 1; i <= n; i++)
         pr[i] = i;
 
-    int count = 0, s = 0;
+    int kount = 0, s = 0;
     for (int i = 0; i < e.size(); i++) {
         int u = Find(e[i].u);
         int v = Find(e[i].v);
         if (u != v) {
             pr[u] = v;
-            count++;
+            kount++;
             s += e[i].w;
-            if (count == n - 1)
+            if (kount == n - 1) //tree te n node and n-1 edge thake
                 break;
         }
     }
