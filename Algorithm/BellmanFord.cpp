@@ -33,11 +33,11 @@ bool bellmanford(int s)
         edge e=V[j];
         if(dis[e.v]>dis[e.u]+e.w)
         {
-            return false; //means Negative cycle detected
+            return true; //means Negative cycle detected
         }
     }
 
-    return true;
+    return false;
 }
 
 int main()
@@ -47,9 +47,9 @@ int main()
     {
         int u,v,w;
         cin >> u >> v >> w;
-        V.pb({u,v,w});
+        V.push_back({u,v,w});
     }
 
-    if(bellmanford(1)) cout << "No Negative Cycle\n";
-    else cout << "Negative Cycle\n";
+    if(bellmanford(1)) cout << "Negative Cycle\n";
+    else cout << "No Negative Cycle\n";
 }

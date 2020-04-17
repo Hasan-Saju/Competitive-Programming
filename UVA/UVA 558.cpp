@@ -5,21 +5,22 @@ struct edge
 {
     int u,v,w;
 };
+
 vector<edge>V;
-int dis[105];
-int n,m;
+int dis[2000];
+int nodes,edges;
 
 bool bellmanford(int s)
 {
-    for(int i=1;i<=n;i++)
-        dis[i]=INT_MAX;
+    for(int i=0;i<=nodes;i++)
+        dis[i]=999999;
 
     dis[s]=0;
-    for(int i=1;i<=n-1;i++)
+
+    for(int i=1;i<=nodes-1;i++)
     {
         for(int j=0;j<V.size();j++)
         {
-
             edge e=V[j];
             if(dis[e.v]>dis[e.u]+e.w)
             {
@@ -32,24 +33,29 @@ bool bellmanford(int s)
     {
         edge e=V[j];
         if(dis[e.v]>dis[e.u]+e.w)
-        {
-            return true; //means Negative cycle detected
-        }
+            return true;
     }
-
     return false;
 }
 
+
+
 int main()
 {
-    cin >> n >> m;
-    for(int i=1;i<=m;i++)
+    int t;
+    cin>>t;
+    while(t--)
     {
-        int u,v,w;
-        cin >> u >> v >> w;
-        V.pb({u,v,w});
+        cin>>nodes>>edges;
+        for(int x=0;x<edges;x++)
+        {
+            int p,q,w;
+            cin>>p>>q>>w;
+            V.push_back({p,q,w});
+        }
+        bool ans=bellmanford(0);
+        if(ans)cout<<"possible"<<endl;
+        else cout<<"not possible"<<endl;
+        V.clear();
     }
-
-    if(bellmanford(1)) cout << "No Negative Cycle\n";
-    else cout << "Negative Cycle\n";
 }
