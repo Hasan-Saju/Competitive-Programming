@@ -49,13 +49,38 @@ ll lcm(ll a,ll b)
 
 }
 
+int sum(int num)
+{
+    int s=0;
+ while(true)
+        {
+
+            int x=num%10;
+            s+=x;
+            num=num/10;
+            if(num==0)break;
+        }
+        return s;
+}
 
 int main()
 {
     fast
-cout<<max(-1,-2);
-si s;
-s.insert(-1);
-s.insert(-6);
-cout<<*s.begin();
+    int n;
+    cin>>n;
+
+    vi v;
+
+
+    for(int i=1;i<=100;i++)
+    {
+        if(i==sum(n-i))
+                v.pb(n-i);
+
+                //cout<<i<<" "<<sum(n-i)<<endl;
+    }
+    sort(v.begin(),v.end());
+    cout<<v.size()<<endl;
+    FOR(j,v.size())cout<<v[j]<<" ";
 }
+

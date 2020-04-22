@@ -52,10 +52,37 @@ ll lcm(ll a,ll b)
 
 int main()
 {
-    fast
-cout<<max(-1,-2);
-si s;
-s.insert(-1);
-s.insert(-6);
-cout<<*s.begin();
+   // fast
+     int t;
+    cin>>t;
+
+    int ara[90000];
+    int f[900000];
+    ll b=2;
+    ll M=99999999;
+
+    for(ll i=0;i<=30;i++)
+    {
+       ara[i]= BMod(b,i,M);
+       cout<<"che";
+    }
+
+    f[0]=ara[0];
+
+    for(int i=1;i<=30;i++)
+    {
+        f[i]=ara[i]+ara[i-1];
+    }
+
+
+    while(t--)
+    {
+        ll x;
+        cin>>x;
+        for(int i=1;i<=30;i++)
+        {
+            if(x%f[i]==0)cout<<f[i]<<endl;
+        }
+    }
 }
+

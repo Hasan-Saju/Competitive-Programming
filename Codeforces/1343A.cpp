@@ -23,7 +23,7 @@ ll Digits(ll a)
 {
     return(floor(log10(a))+1);
 }
-ll BMod(ll B,ll P,ll M)
+int BMod(int B,int P,int M)
 {
     ll R=1;
     B=B%M;
@@ -52,10 +52,21 @@ ll lcm(ll a,ll b)
 
 int main()
 {
-    fast
-cout<<max(-1,-2);
-si s;
-s.insert(-1);
-s.insert(-6);
-cout<<*s.begin();
+   // fast
+     int t;
+    cin>>t;
+    while(t--)
+    {
+        int x;
+        cin>>x;
+        for(ll i=2;i<=29;i++)
+        {
+           ll val= BMod(2,i,999999999)-1;
+            if(x%val==0)
+            {
+                cout<<x/val<<endl;
+                break;
+            }
+        }
+    }
 }

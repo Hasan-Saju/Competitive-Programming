@@ -53,9 +53,39 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
-cout<<max(-1,-2);
-si s;
-s.insert(-1);
-s.insert(-6);
-cout<<*s.begin();
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int x;
+        cin>>x;
+        int half=x/2;
+        if(half%2==1)
+        {
+            cout<<"NO"<<endl;
+        }
+        else
+        {
+            vi v;
+            cout<<"YES"<<endl;
+            int sum=0;
+            for(int i=0,j=2;i<half;i++,j=j+2)
+            {
+                //v.pb(j);
+                cout<<j<<" ";
+                sum+=j;
+            }
+            int odd=0;
+            for(int i=0,j=1;i<half-1;i++,j=j+2)
+            {
+                //v.pb(j);
+                cout<<j<<" ";
+                odd+=j;
+            }
+            cout<<sum-odd<<endl;
+
+        }
+    }
+
 }
+

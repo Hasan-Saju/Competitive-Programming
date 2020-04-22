@@ -49,13 +49,27 @@ ll lcm(ll a,ll b)
 
 }
 
+vector<int>v;
 
 int main()
 {
     fast
-cout<<max(-1,-2);
-si s;
-s.insert(-1);
-s.insert(-6);
-cout<<*s.begin();
+    int n;
+    cin>>n;
+    for(int i=0;i<n;i++)
+    {
+        int x;
+        cin>>x;
+        v.pb(x);
+    }
+    sort(v.begin(),v.end());
+    ll ans=0;
+    for(int i=1;i<=n;i++)
+    {
+        ans+=abs(v[i-1]-i);
+    }
+    cout<<ans;
+
+
 }
+

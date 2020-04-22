@@ -53,9 +53,37 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
-cout<<max(-1,-2);
-si s;
-s.insert(-1);
-s.insert(-6);
-cout<<*s.begin();
+    ll n;
+    ll M=3000000000;
+    cin>>n;
+
+    ll dig[15];
+    memset(dig,0,sizeof(dig));
+
+    dig[1]=9;
+    dig[2]=180;
+    dig[3]=2700;
+    dig[4]=36000;
+    dig[5]=450000;
+    dig[6]=5400000;
+    dig[7]=63000000;
+    dig[8]=720000000;
+    dig[9]=8100000000;
+    dig[10]=90000000000;
+
+
+    ll given=Digits(n);
+
+   ll temp=n-BMod(10,given-1,M)+1;
+   ll tempAns=temp*given;
+
+    for(int i=given-1;i>0;i--)
+        tempAns+=dig[i];
+
+    cout<<tempAns;
+
+
+
+
 }
+
