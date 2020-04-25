@@ -53,5 +53,25 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,s1,s2,f1,f2;
+        cin>>n>>s1>>s2>>f1>>f2;
 
+        int p1=abs(s1-s2)*n;
+        int p2=(s1+s2)*n;
+
+        int fp1=abs(f1-f2);
+        int fp2=abs(f1+f2);
+        // cout<<p1<<" "<<p2<<" "<<fp1<<" "<<fp2<<endl;
+
+        if(p1>=fp1 and p1<=fp2 || p2>=fp1 and p2<=fp2 || fp1>=p1 and fp1<=p2 || fp2>=p1 and fp2<=p2)
+            cout<<"Yes"<<endl;
+        else
+            cout<<"No"<<endl;
+
+    }
 }
+

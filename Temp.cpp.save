@@ -53,8 +53,5 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
-    vector<int>V[10];
-    V[1].pb(2);
-    V[1].pb(4);
-    
+
 }
