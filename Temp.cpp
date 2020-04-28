@@ -18,6 +18,7 @@ using namespace std;
 //lower_bound == Shoman othoba prothom boro element ta return korbe//iterator return kore
 //upper bound mane first boro element return korbe
 //string s(n,'a');
+//ans+=string(r,'R');
 
 ll Digits(ll a)
 {
