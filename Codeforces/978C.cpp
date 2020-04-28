@@ -36,17 +36,6 @@ ll BMod(ll B,ll P,ll M)
     }
     return R;
 }
-ll POW(ll  B,ll P)
-{
-    ll R=1;
-    while(P) {
-        if(P&1)
-            R=R*B;
-        B=B*B;
-        P>>=1;
-    }
-    return R;
-}
 ll gcd(ll a, ll b)
 {
     if (b == 0)
@@ -60,9 +49,48 @@ ll lcm(ll a,ll b)
 
 }
 
+int check(int n)
+{
+    if(n<0)return 0;
+    else return n;
+}
 
 int main()
 {
     fast
+    ll n,m;
+    vector<ll>v;
+    cin>>n>>m;
+    FOR(i,n)
+    {
+        ll x;
+        cin>>x;
+        v.pb(x);
+    }
+    vector<ll>cum;
+
+    cum=v;
+
+    for(ll i=1;i<cum.size();i++)
+    {
+        cum[i]=cum[i]+cum[i-1];
+    }
+
+
+
+    FOR(i,m)
+    {
+        ll x;
+        cin>>x;
+        //cout<<"c";
+        ll dorm =lower_bound(cum.begin(),cum.end(),x)-cum.begin()+1;
+
+        ll minuss=cum[dorm-2];
+        if(dorm-2<0)minuss=0;
+        ll room = x-minuss;
+
+        cout<<dorm<<" "<<room<<endl;
+    }
 
 }
+

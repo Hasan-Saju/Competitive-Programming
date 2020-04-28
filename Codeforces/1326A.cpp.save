@@ -36,17 +36,6 @@ ll BMod(ll B,ll P,ll M)
     }
     return R;
 }
-ll POW(ll  B,ll P)
-{
-    ll R=1;
-    while(P) {
-        if(P&1)
-            R=R*B;
-        B=B*B;
-        P>>=1;
-    }
-    return R;
-}
 ll gcd(ll a, ll b)
 {
     if (b == 0)
@@ -64,5 +53,31 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        if(n==1)cout<<"-1"<<endl;
+        else
+        {
+            string s(n-1,'2');
+           int two= (n-1)*2;
+           int bef=(n-2)*2
+           if((two)%3==0)
+                    {
+                        s+="5";
+                        swap(s[n-1],s[n-2]);
+                        s[n-1]='3';
+                    }
+           else s+="3";
+           cout<<s<<endl;
+        }
+
+    }
+
 
 }
+

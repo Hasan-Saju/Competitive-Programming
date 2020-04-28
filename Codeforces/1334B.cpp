@@ -36,17 +36,6 @@ ll BMod(ll B,ll P,ll M)
     }
     return R;
 }
-ll POW(ll  B,ll P)
-{
-    ll R=1;
-    while(P) {
-        if(P&1)
-            R=R*B;
-        B=B*B;
-        P>>=1;
-    }
-    return R;
-}
 ll gcd(ll a, ll b)
 {
     if (b == 0)
@@ -64,5 +53,42 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll n,minn;
+        cin>>n>>minn;
+        ll extra=0,posh=0;
+        vi v;
+
+        FOR(i,n)
+        {
+            int x;
+            cin>>x;
+            if(x>=minn)
+            {
+                extra+=(x-minn);
+                posh++;
+            }
+            else
+                v.pb(x);
+
+        }
+        sort(v.begin(),v.end(),greater<int>());
+//        FOR(i,v.size())cout<<v[i]<<" ";
+//        cout<<"\n";
+
+        for(int i=0;i<v.size();i++)
+        {
+            int kom=minn-v[i];
+            extra-=kom;
+            if(extra>=0)posh++;
+            else break;
+        }
+        cout<<posh<<"\n";
+    }
+
 
 }
+

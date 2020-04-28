@@ -36,17 +36,6 @@ ll BMod(ll B,ll P,ll M)
     }
     return R;
 }
-ll POW(ll  B,ll P)
-{
-    ll R=1;
-    while(P) {
-        if(P&1)
-            R=R*B;
-        B=B*B;
-        P>>=1;
-    }
-    return R;
-}
 ll gcd(ll a, ll b)
 {
     if (b == 0)
@@ -64,5 +53,45 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+
+        int n;
+        cin>>n;
+        vector<pair<int,int> >vp;
+        pair<int,int>p;
+
+        FOR(i,n)
+        {
+            int x,y;
+            cin>>x>>y;
+            vp.pb(mp(x,y));
+        }
+
+        int flag=0;
+        p=vp[0];
+
+        if(p.ss>p.ff)flag=1;
+
+        for(int i=1;i<n;i++)
+        {
+            p=vp[i];
+
+            int d1= p.ff-vp[i-1].ff ;
+            int d2= p.ss-vp[i-1].ss ;
+            if((p.ff==vp[i-1].ff and p.ss==vp[i-1].ss || p.ff>vp[i-1].ff and p.ss>=vp[i-1].ss ) and );
+            else
+            {
+                flag=1;
+                break;
+            }
+        }
+        if(flag)cout<<"NO\n";
+        else cout<<"YES\n";
+
+    }
+
 
 }

@@ -36,17 +36,6 @@ ll BMod(ll B,ll P,ll M)
     }
     return R;
 }
-ll POW(ll  B,ll P)
-{
-    ll R=1;
-    while(P) {
-        if(P&1)
-            R=R*B;
-        B=B*B;
-        P>>=1;
-    }
-    return R;
-}
 ll gcd(ll a, ll b)
 {
     if (b == 0)
@@ -64,5 +53,61 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+        ll n;
+        cin>>n;
+        queue<pair<ll,ll> >q;
+        pair<ll,ll>p;
+
+        ll minn=9999999;
+
+        FOR(i,n)
+        {
+            ll x,y;
+            cin>>x>>y;
+            minn=min(minn,x);
+            q.push(mp(x,y));
+        }
+        ll total=0;
+
+        while(!q.empty())
+        {
+           p=q.front();
+
+           if(p.ff!=minn)
+           {
+                q.pop();
+               q.push(p);
+           }
+           else
+                break;
+        }
+
+        ll prev=0;
+
+        while(!q.empty())
+        {
+            p=q.front();
+            p.ff=p.ff-prev;
+            if(p.ff<=0)
+            {
+                q.pop();
+                prev=p.ss;
+                continue;
+
+            }
+            total+=p.ff;
+            prev=p.ss;
+            q.pop();
+           // cout<<p.ff<<" "<<p.ss<<endl;
+        }
+
+        cout<<total<<endl;
+
+    }
 
 }
+
