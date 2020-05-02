@@ -66,5 +66,45 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+         ll a,b,q;
+    cin>>a>>b>>q;
+    while(q--)
+    {
+        ll l,r;
+        cin>>l>>r;
+        ll total=0;
+
+        if(r>=b && l>=b)
+            total=r-l+1;
+        else if(r>=b && l<b)
+            total=r-b+1;
+
+           // cout<<total<<NL;
+        ll lcmm=lcm(a,b);
+        for(ll i=1;;i++)
+        {
+            ll temp=lcmm*i;
+           // cout<<temp<<" ";
+            if(temp>r)break;
+            ll tempR=temp+b-1;
+
+            if(tempR<l);
+            else if(l<=temp  and  tempR<=r)total=total-b;
+            else if(l>temp and tempR<=r)total=total-tempR-a;
+            else total=total-temp-b-1;
+            //cout<<total<<NL;
+
+        }
+        cout<<total<<" ";
+
+    }
+    cout<<NL;
+    }
+
 
 }
+

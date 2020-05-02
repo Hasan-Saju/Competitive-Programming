@@ -15,7 +15,6 @@ using namespace std;
 #define asi         cout<<"Check"<<endl
 #define bye         return 0
 #define ok          cout<<"OK"<<endl
-#define NL          "\n"
 //lower_bound == Shoman othoba prothom boro element ta return korbe//iterator return kore
 //upper bound mane first boro element return korbe
 //string s(n,'a');
@@ -66,5 +65,41 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+
+        int n,k,kount=0,gono=0,ind=0;
+        cin>>n>>k;
+        vi ans;
+        si s;
+        int maxx=-9999;
+        FOR(i,n)
+        {
+            int x;
+            cin>>x;
+            s.insert(x);
+        }
+        if(s.size()>k)cout<<"-1"<<endl;
+        else
+        {
+            cout<<n*k<<endl;
+            FOR(i,n)
+            {
+                for(auto x:s )
+                {
+                    cout<<x<<" ";
+                }
+                if(s.size()<k)
+                {
+                    for(int i=0;i<k-s.size();i++)
+                        cout<<*(s.begin())<<" ";
+                }
+                cout<<endl;
+            }
+        }
+    }
 
 }
+
