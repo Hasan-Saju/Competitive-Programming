@@ -7,7 +7,6 @@ using namespace std;
 #define ss          second
 #define vi          vector<int>
 #define si          set<int>
-#define pi          pair<int,int>
 #define FOR(i,n)    for(int i=0;i<n;i++)
 #define fast        ios_base::sync_with_stdio(false);cin.tie(NULL);
 #define SP(x)       fixed<<setprecision(x)
@@ -67,5 +66,9 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    ll o1,m1,o2,m2,o3,m3;
+    cin>>o1>>m1>>o2>>m2>>o3>>m3;
+    cout<<o1-o3<<" "<<m1-m2;
 
 }
+

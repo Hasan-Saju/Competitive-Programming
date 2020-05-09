@@ -67,5 +67,52 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int n,q;
+    cin>>n>>q;
+    set<pi>forbid;
+    int bad_nei=0;
+
+    FOR(i,q)
+    {
+        int row,col;
+        cin>>row>>col;
+
+        int x=row;
+        int y=col;
+
+        bool kharap=false;
+        if(forbid.count({x,y}))
+        {
+            kharap=true;
+        }
+
+        for(int r=row-1; r<=row+1;r++)
+        {
+            for(int c=col-1; c<=col+1; c++)
+            {
+                if( r<1 or r>2 or c<1 or c>n)continue;
+                if(r==row and c==col)continue;//nije bad
+                if(r==row)continue;
+                if(forbid.count({r,c}))
+                {
+                    if(kharap)
+                        bad_nei--;
+                    else
+                        bad_nei++;
+                }
+
+            }
+        }
+        if(forbid.count({x,y}))
+            {
+                forbid.erase({x,y});
+            }
+        else forbid.insert({x,y});
+
+        if(bad_nei>=1)cout<<"NO"<<NL;
+        else cout<<"YES"<<NL;
+
+
+    }
 
 }

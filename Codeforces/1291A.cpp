@@ -67,5 +67,29 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        string s,ans="";
+        cin>>s;
+
+        for(int i=0;i<n;i++)
+        {
+
+            if( (s[i]-'0')%2==1 )
+            {
+                ans+=s[i];
+                if(ans.size()==2)break;
+            }
+
+        }
+
+        if(ans.size()==2)cout<<ans<<NL;
+        else cout<<"-1"<<NL;
+    }
 
 }
+

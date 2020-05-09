@@ -7,7 +7,6 @@ using namespace std;
 #define ss          second
 #define vi          vector<int>
 #define si          set<int>
-#define pi          pair<int,int>
 #define FOR(i,n)    for(int i=0;i<n;i++)
 #define fast        ios_base::sync_with_stdio(false);cin.tie(NULL);
 #define SP(x)       fixed<<setprecision(x)
@@ -67,5 +66,49 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        string s;
+        cin>>s;
+        
+        map<pair<int,int>,int>m;
+        pair<int,int>temp;
+        int l=0,r=n;
+        
+        int lr=0,ud=0;
+        
+        temp.ff=lr;
+        temp.ss=ud;
+        
+        m[temp]=1;
+        
+        for(int i=0;i<n;i++)
+        {
+            if(s[i]=='R')lr++;
+            else if(s[i]=='L')lr--;
+            else if(s[i]=='U')ud++;
+            else if(s[i]=='D')ud--;
+            
+            temp.ff=lr;
+            temp.ss=ud;
+            
+            if(m[temp])
+            {
+                if(i-m[temp]<r-l)
+                {
+                    l=m[temp];
+                    r=i;
+                }
+            }
+            
+            m[temp]=i+2;
+            
+        }
+        cout<<l<<" "r<<NL;
+    }
 
 }
