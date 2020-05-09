@@ -67,6 +67,75 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        vi v;
+        FOR(i,n)
+        {
+            int x;
+            cin>>x;
+            v.pb(x);
+        }
+
+        int alice=0,bob=0,kount=0,temp=0,atotal=0,btotal=0,flag=0;
+        for(int i=0,j=n-1; i<=j ;)
+        {
+            alice=0;
+            bob=0;
+           // cout<<i<<" "<<j<<NL;
+
+
+            while(alice<=temp)
+            {
+                alice=alice+v[i];
+                i++;
+                //cout<<"y"<<NL;
+
+                if(i>j)
+                {
+                    atotal+=alice;
+                    kount++;
+                    //cout<<alice<<" ";
+                    flag=1;
+                    break;
+                }
+            }
+
+           if(!flag) atotal+=alice;
+            temp=alice;
+
+            if(i>j)break;
+
+            while(bob<=temp)
+            {
+                bob=bob+v[j];
+                j--;
+
+
+                if(i>j)
+                {
+                    btotal+=bob;
+                kount+=2;
+                flag=1;
+                // cout<<bob<<NL;
+                 break;
+                }
+
+            }
+            if(i>j)break;
+           if(!flag) btotal+=bob;
+            temp=bob;
+
+    kount+=2;
+
+        }
+        cout<<kount<<" "<<atotal<<" "<<btotal<<NL;
+
+    }
 
 }
 

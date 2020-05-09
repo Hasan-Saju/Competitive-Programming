@@ -67,6 +67,44 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    vi v;
 
+    while(t--)
+    {
+        int n,k;
+        cin>>n>>k;
+
+        int same=k-1;
+        int sameEven=same*2;
+        int sameOdd=same*1;
+
+        int bakiEv=n-sameEven;
+        int bakiOd=n-sameOdd;
+
+      
+        if(bakiOd%2==1)
+        {
+            cout<<"YES"<<NL;
+            while(same--)
+                cout<<"1 ";
+            cout<<bakiOd<<NL;
+        }
+        else if(bakiEv%2==0)
+        {
+            cout<<"YES"<<NL;
+            while(same--)
+                cout<<"2 ";
+            cout<<bakiEv<<NL;
+        }
+          else
+        {
+            cout<<"NO"<<NL;
+        }
+
+
+
+    }
 }
 

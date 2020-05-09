@@ -67,6 +67,27 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll n,k;
+        cin>>n>>k;
 
+        int ans=n*k/(n-1);
+        if(ans%n==0)ans--;
+        cout<<ans<<NL;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
 
