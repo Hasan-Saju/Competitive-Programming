@@ -15,6 +15,7 @@ using namespace std;
 #define asi         cout<<"Check"<<endl;
 #define bye         return 0
 #define ok          cout<<"OK"<<endl
+#define NL          "\n"
 //lower_bound == Shoman othoba prothom boro element ta return korbe//iterator return kore
 //upper bound mane first boro element return korbe
 //string s(n,'a');
@@ -48,24 +49,6 @@ ll lcm(ll a,ll b)
     return a*b/gcd(a,b);
 
 }
-int gw,bw;
-void workDiv(int n)
-{
-
-    if(n%2!=0)gw=(n/2)+1;
-    else gw=n/2;
-    bw=n/2;
-
-}
-
-workDay(int gw,int bw)
-{
-    ug=max(gw,g);
-    gw=gw-max(gw,g)
-    ub=max(bw,b);
-    bw=bw-max(bw,b);
-}
-
 
 
 int main()
@@ -75,13 +58,19 @@ int main()
     cin>>t;
     while(t--)
     {
-        int n,g,b;
-        cin>>n>>g>>b;
-        workDiv(n);
+        ll task,good,bad;
+        cin>>task>>good>>bad;
 
-        workDay(gw,bw);
+        ll needG=(task+1)/2;
 
+        ll total=(needG/good)*(good+bad);
 
+        if(needG%good>0)
+        total=total+(needG%good);
+        else
+        total=total-bad;
+
+        cout<<max(total,task)<<NL;
 
     }
 

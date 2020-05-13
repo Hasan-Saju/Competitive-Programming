@@ -7,17 +7,20 @@ using namespace std;
 #define ss          second
 #define vi          vector<int>
 #define si          set<int>
+#define pi          pair<int,int>
 #define FOR(i,n)    for(int i=0;i<n;i++)
 #define fast        ios_base::sync_with_stdio(false);cin.tie(NULL);
 #define SP(x)       fixed<<setprecision(x)
 #define fWrite      freopen("out.txt", "w", stdout);//to write the output in a txt file
 #define fRead       freopen("in.txt", "r", stdin);
-#define asi         cout<<"Check"<<endl;
+#define asi         cout<<"Check"<<endl
 #define bye         return 0
 #define ok          cout<<"OK"<<endl
+#define NL          "\n"
 //lower_bound == Shoman othoba prothom boro element ta return korbe//iterator return kore
 //upper bound mane first boro element return korbe
 //string s(n,'a');
+//ans+=string(r,'R');
 
 ll Digits(ll a)
 {
@@ -33,6 +36,17 @@ ll BMod(ll B,ll P,ll M)
             R=(R*B)%M;
         P >>= 1;
         B=(B*B)%M;
+    }
+    return R;
+}
+ll POW(ll  B,ll P)
+{
+    ll R=1;
+    while(P) {
+        if(P&1)
+            R=R*B;
+        B=B*B;
+        P>>=1;
     }
     return R;
 }
@@ -53,18 +67,36 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
-    int t;
-    cin>>t;
-    while(t--)
-    {
-        ll task,good,bad;
-        ll needG=task/good;
-        
-        ll total=(needG/good)*(good+bad);
-        total=total+(needG%good);
-        tota
+    int q,m;
 
+    cin>>q>>m;
+    vector<int>v(m);
+    set<pair<int,int> >s;
+    FOR(i,m)
+    s.insert({0,i});
+
+    pair<int,int>temp;
+    while(q--)
+    {
+        int x;
+        cin>>x;
+        int mod=x%m;
+
+
+        temp.ff=v[mod];
+        temp.ss=mod;
+        s.erase(temp);
+
+        v[mod]++;
+        temp.ff=v[mod];
+        temp.ss=mod;
+        s.insert(temp);
+
+
+        int ans=(s.begin()->ff*m)+s.begin()->ss;
+        cout<<ans<<NL;
     }
+
 
 }
 

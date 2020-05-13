@@ -62,19 +62,87 @@ ll lcm(ll a,ll b)
     return a*b/gcd(a,b);
 
 }
+bool alp[26];
 
+bool possibility(string s)
+{
+    vector<set<int> >v(26);
+    FOR(i,s.size()-1)
+    {
+        v[s[i]-'a'].insert(s[i+1]-'a');
+        v[s[i+1]-'a'].insert(s[i]-'a');
+    }
+    int start=-1;
+
+    FOR(i,26)
+    {
+        if(v[i].size()==1)start=i;
+        if(v[i].size()>2)
+        {
+            start=-1;
+            break;
+        }
+    }
+    if(start==-1)return false;
+    else return true;
+
+}
 
 int main()
 {
     fast
     int t;
     cin>>t;
-    FOR(i,t)
+    while(t--)
     {
-        ll a,b;
-        cin>>a>>b;
-        ll numB=Digits(b+1)-1;
-        cout<<a*numB<<NL;
+        string s,ans="";
+        cin>>s;
+        set<char>sett,check;
+
+        FOR(i,s.size())
+        sett.insert(s[i]);
+
+        int uniq=sett.size();
+
+        int left=-1,right=-1;
+
+        for(int i=0;i<s.size()-(uniq-1);i++)
+        {
+            for(int j=i;j<i+uniq;j++)
+            {
+                check.insert(s[j]);
+            }
+            if(check.size()==uniq)
+            {
+                left=i;
+                right=left+uniq;
+                break;
+            }
+            check.clear();
+        }
+
+        memset(alp,true,sizeof(alp));
+
+        for(int i=left;i<right;i++)
+        {
+            int x=s[i]-'a';
+            alp[x]=false;
+            ans+=s[i];
+        }
+
+        if(possibility(s)||s.size()==1)cout<<"YES"<<NL;
+        else 
+        {
+            cout<<"NO"<<NL;
+        }
+        
+        cout<<ans;
+        char ch;
+        FOR(i,26)
+        if(alp[i]==true)
+            cout<<(ch=i+'a');
+        cout<<NL;
     }
 
 }
+
