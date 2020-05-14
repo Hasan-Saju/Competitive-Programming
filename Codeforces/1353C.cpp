@@ -67,5 +67,27 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+        ll n;
+        cin>>n;
+        ll ans=0;
+        if(n==1)
+        {
+            cout<<"0"<<NL;
+            continue;
+        }
+        for(ll i=8,j=1;;j++,i=i+8)
+        {
+            ll sonkha= i;
+           // cout<<sonkha<<" ";
+            ans=ans+ (sonkha*j);
+            if((j*2)+1>=n)break;
+        }
+        cout<<ans<<NL;
+    }
 
 }
+

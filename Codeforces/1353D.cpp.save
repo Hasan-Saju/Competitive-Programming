@@ -63,9 +63,55 @@ ll lcm(ll a,ll b)
 
 }
 
+int ans[300006];
 
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        memset(ans,0,sizeof(ans));
+        set<pair<int,int> >s;
+        pair<int,int>temp;
+
+        s.insert({n,-1});
+
+        int kounter=0;
+
+        while(!s.empty())
+        {
+            kounter++;
+
+            temp=*(s.rbegin());
+            int len=temp.ff;
+            int start=-1*temp.ss;
+            s.erase(temp);
+
+            int finish=start+len-1;
+
+            int mid= (start+finish)/2;
+            ans[mid]=kounter;
+
+            if(mid-start)
+            s.insert((mid-1)-start+1,(-1*start));
+            if(finish-mid)
+            s.insert((finish-(mid+1)+1),(-1*(mid+1)));
+
+
+        }
+        for(int i=1;i<=n;i++)
+            cout<<ans[i]<<" ";
+        cout<<NL;
+
+
+
+
+
+    }
 
 }
+

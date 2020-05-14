@@ -67,5 +67,54 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,k;
+        cin>>n>>k;
+        multiset<int>f,s;
+        FOR(i,n)
+        {
+            int x;
+            cin>>x;
+            f.insert(x);
+        }
+        FOR(i,n)
+        {
+            int x;
+            cin>>x;
+            s.insert(x);
+        }
+
+       while(k--)
+       {
+           int vf=*(f.begin());
+           int vs=*(s.rbegin());
+           multiset<int>::iterator it;
+           it=s.end();
+           it--;
+
+           if(vs>vf)
+           {
+               f.erase(f.begin());
+               s.erase(it);
+
+                f.insert(vs);
+                s.insert(vf);
+           }
+           else continue;
+       }
+        int sum=0;
+        for(auto x:f)
+            sum+=x;
+
+            cout<<sum<<NL;
+
+
+
+
+    }
 
 }
+

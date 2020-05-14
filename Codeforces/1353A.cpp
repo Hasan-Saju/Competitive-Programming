@@ -67,5 +67,15 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+        ll n,m;
+        cin>>n>>m;
+        if(n==1)cout<<"0"<<NL;
+        else if(n==2)cout<<m<<NL;
+        else cout<<2*m<<NL;
+    }
 
 }
