@@ -9,12 +9,6 @@ using namespace std;
 #define si          set<int>
 #define pi          pair<int,int>
 #define FOR(i,n)    for(int i=0;i<n;i++)
-
-#define min3(a,b,c)     min(a,min(b,c))
-#define max3(a,b,c)     max(a,max(b,c))
-#define min4(a,b,c,d)   min(a,min(b,min(c,d)))
-#define max4(a,b,c,d)   max(a,max(b,max(c,d)))
-
 #define fast        ios_base::sync_with_stdio(false);cin.tie(NULL);
 #define SP(x)       fixed<<setprecision(x)
 #define fWrite      freopen("out.txt", "w", stdout);//to write the output in a txt file
@@ -23,7 +17,6 @@ using namespace std;
 #define bye         return 0
 #define ok          cout<<"OK"<<endl
 #define NL          "\n"
-
 //lower_bound == Shoman othoba prothom boro element ta return korbe//iterator return kore
 //upper bound mane first boro element return korbe
 //string s(n,'a');
@@ -70,9 +63,46 @@ ll lcm(ll a,ll b)
 
 }
 
+int calculation(int one,int two, int three)
+{
+    vi v;
+    v.pb(one);
+    v.pb(two);
+    v.pb(three);
+    sort(v.begin(),v.end());
+    return v[2]-v[0]+1;
+}
 
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        string s;
+        cin>>s;
+        int one=-1,two=-1,three=-1;
+        int sizee=-1,flag=0,ans=INT_MAX;
+
+        FOR(i,s.size())
+        {
+            if(s[i]=='1')
+                one=i;
+            else if(s[i]=='2')
+                two=i;
+            else
+                three=i;
+            if(one==-1 || two==-1 || three==-1)
+                continue;
+
+                flag=1;
+            sizee=calculation(one,two,three);
+            ans=min(ans,sizee);
+        }
+        if(!flag)cout<<"0"<<NL;
+        else cout<<ans<<NL;
+    }
 
 }
+

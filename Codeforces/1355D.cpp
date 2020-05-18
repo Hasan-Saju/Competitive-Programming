@@ -9,12 +9,6 @@ using namespace std;
 #define si          set<int>
 #define pi          pair<int,int>
 #define FOR(i,n)    for(int i=0;i<n;i++)
-
-#define min3(a,b,c)     min(a,min(b,c))
-#define max3(a,b,c)     max(a,max(b,c))
-#define min4(a,b,c,d)   min(a,min(b,min(c,d)))
-#define max4(a,b,c,d)   max(a,max(b,max(c,d)))
-
 #define fast        ios_base::sync_with_stdio(false);cin.tie(NULL);
 #define SP(x)       fixed<<setprecision(x)
 #define fWrite      freopen("out.txt", "w", stdout);//to write the output in a txt file
@@ -23,7 +17,6 @@ using namespace std;
 #define bye         return 0
 #define ok          cout<<"OK"<<endl
 #define NL          "\n"
-
 //lower_bound == Shoman othoba prothom boro element ta return korbe//iterator return kore
 //upper bound mane first boro element return korbe
 //string s(n,'a');
@@ -74,5 +67,23 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int n,sum;
+    cin>>n>>sum;
+    int last = sum -(n-1);
+    int dibo= last-1;
+    if(dibo<=(n-1))
+    {
+        cout<<"NO"<<NL;
+        return 0;
+    }
+    cout<<"YES"<<NL;
+    int one=n-1;
+    while(one--)
+    {
+        cout<<"1 ";
+    }
+    cout<<last<<NL<<last-1;
+
 
 }
+
