@@ -70,7 +70,6 @@ ll lcm(ll a,ll b)
 
 }
 
-
 int main()
 {
     fast
