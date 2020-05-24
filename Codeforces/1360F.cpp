@@ -74,4 +74,30 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,len;
+        cin>>n>>len;
+        vector<string>v;
+
+        FOR(i,n)
+        {
+            string s;
+            cin>>s;
+            v.pb(s);
+        }
+
+        FOR(i,len)
+        {
+
+        }
+
+
+
+
+
+    }
 }
+

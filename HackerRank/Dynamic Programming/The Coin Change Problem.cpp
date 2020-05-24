@@ -50,7 +50,8 @@ ll BMod(ll B,ll P,ll M)
 ll POW(ll  B,ll P)
 {
     ll R=1;
-    while(P) {
+    while(P)
+    {
         if(P&1)
             R=R*B;
         B=B*B;
@@ -74,4 +75,36 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int n,m;
+    cin>>n>>m;
+    vi v;
+
+    int dp[260];
+    memset(dp,0,sizeof(dp));
+
+    FOR(i,m)
+    {
+        int x;
+        cin>>x;
+        v.pb(x);
+    }
+
+    dp[0]=1;
+
+    for(int i=0; i<m; i++)
+    {
+        for(int amount=0; amount<=10 ; amount++)
+        {
+            if(dp[amount]!=0 and amount+v[i]<=10)
+            { dp[amount+v[i]]++ , cout<<amount+v[i]<<NL ; }
+
+                //dp[amount]++ ,
+        }
+    }
+
+    cout<<dp[n];
+
+
+
 }
+

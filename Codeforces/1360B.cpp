@@ -74,4 +74,34 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        vi v;
+
+        FOR(i,n)
+        {
+            int x;
+            cin>>x;
+            v.pb(x);
+        }
+        sort(v.begin(),v.end());
+
+        int minn=INT_MAX;
+
+        for(int i=1;i<n;i++)
+        {
+            int x=v[i]-v[i-1];
+            minn=min(x,minn);
+        }
+
+        cout<<minn<<NL;
+
+
+
+    }
 }
+

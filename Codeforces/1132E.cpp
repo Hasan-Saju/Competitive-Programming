@@ -74,4 +74,21 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    ll w;
+    vector<ll>v(8);
+    vector<ll>ans;
+
+    FOR(i,8)
+    {
+        ll x;
+        cin>>x;
+        v.pb(x);
+    }
+
+
+
+
+
+
 }
+

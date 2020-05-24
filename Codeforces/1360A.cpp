@@ -74,4 +74,25 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+        ll a,b;
+        cin>>a>>b;
+
+        ll tem= min(a,b)*2;
+
+        if(tem>=max(a,b))
+        {
+            ll ans= tem*tem;
+            cout<<ans<<NL;
+        }
+        else
+        {
+            ll ans=max(a,b);
+            ans=ans*ans;
+            cout<<ans<<NL;
+        }
+    }
 }

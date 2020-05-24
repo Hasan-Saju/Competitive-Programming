@@ -19,11 +19,11 @@ using namespace std;
 #define SP(x)       fixed<<setprecision(x)
 #define fWrite      freopen("out.txt", "w", stdout);//to write the output in a txt file
 #define fRead       freopen("in.txt", "r", stdin);
-#define PI          2*acos(0.0)
 #define asi         cout<<"Check"<<endl
 #define bye         return 0
 #define ok          cout<<"OK"<<endl
 #define NL          "\n"
+#define PI          2*acos(0.0)
 
 //lower_bound == Shoman othoba prothom boro element ta return korbe//iterator return kore
 //upper bound mane first boro element return korbe
@@ -74,4 +74,18 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        double ans;
+        double cal= (double)(2*PI)/(2*2*n);
+        ans= (double) 1/ tan(cal);
+        cout<<SP(9)<<ans<<NL;
+
+    }
+
 }
+

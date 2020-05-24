@@ -50,7 +50,8 @@ ll BMod(ll B,ll P,ll M)
 ll POW(ll  B,ll P)
 {
     ll R=1;
-    while(P) {
+    while(P)
+    {
         if(P&1)
             R=R*B;
         B=B*B;
@@ -71,7 +72,75 @@ ll lcm(ll a,ll b)
 
 }
 
+bool prime[10000000];
+void SieveOfEratosthenes(int n)
+{
+    // Create a boolean array "prime[0..n]" and initialize
+    // all entries it as true. A value in prime[i] will
+    // finally be false if i is Not a prime, else true.
+
+    memset(prime, true, sizeof(prime));
+
+    for (int p=2; p*p<=n; p++)
+    {
+        // If prime[p] is not changed, then it is a prime
+        if (prime[p] == true)
+        {
+            // Update all multiples of p greater than or
+            // equal to the square of it
+            // numbers which are multiple of p and are
+            // less than p^2 are already been marked.
+            for (int i=p*p; i<=n; i += p)
+                prime[i] = false;
+        }
+    }
+
+    // Print all prime numbers
+   /* for (int p=2; p<=n; p++)
+       if (prime[p])
+          cout << p << " ";*/
+}
+
 int main()
 {
     fast
+    ll t;
+    cin>>t;
+    ll ans=0;
+    //SieveOfEratosthenes(1000000000);
+
+    while(t--)
+    {
+        ll n,k;
+        cin>>n>>k;
+
+        if(k>=n)
+        {
+            cout<<"1"<<NL;
+            continue;
+        }
+        ans=INT_MAX;
+        ll big=-999;
+
+        for(int i=sqrt(n) + 1; i>=1; i--)
+        {
+            if( n%i==0)
+            {
+               ll x=i;
+               ll y=n/i;
+               if(x<=k)
+               {
+                   ans= min(ans,n/x);
+               }
+               if(y<=k)
+               {
+                   ans= min(ans,n/y);
+               }
+            }
+        }
+        cout<<ans<<NL;
+
+
+    }
 }
+

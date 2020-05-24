@@ -71,7 +71,23 @@ ll lcm(ll a,ll b)
 
 }
 
+int f[51][51];
+
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,m,a,b;
+        cin>>n>>m>>a>>b;
+        memset(f,0,sizeof(f));
+
+        for(int i=1;i<=n;i++)
+        {
+
+        }
+    }
 }
+

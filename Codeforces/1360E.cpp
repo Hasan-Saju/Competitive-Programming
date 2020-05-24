@@ -71,7 +71,66 @@ ll lcm(ll a,ll b)
 
 }
 
+int field[51][51];
+
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        memset(field,0,sizeof(field));
+
+        FOR(i,n)
+        {
+            string s;
+            cin>>s;
+
+            FOR(j,s.size())
+            {
+                if(s[j]=='0')
+                    field[i+1][j+1]=0;
+                else
+                     field[i+1][j+1]=1;
+            }
+
+        }
+
+       /* for(int i=1;i<=n;i++)
+        {
+            for(int j=1;j<=n;j++)
+            {   cout<<field[i][j]<<" ";
+            }cout<<NL;
+        }*/
+
+        int flag=0;
+
+        for(int i=1;i<=n;i++)
+        {
+            for(int j=1;j<=n;j++)
+            {
+                if(field[i][j]==1 and (field[i][j+1]==1 or field[i+1][j]==1) );
+                else if(field[i][j]==1 and (i==n or j==n) );
+                else if(field[i][j]==0);
+                else
+                {
+                    flag=1;
+                    break;
+                }
+
+            }
+        }
+
+        if(flag)cout<<"NO"<<NL;
+            else cout<<"YES"<<NL;
+
+
+
+
+
+    }
 }
+

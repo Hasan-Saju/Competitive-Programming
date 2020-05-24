@@ -74,4 +74,48 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        vi v;
+        int odd=0,even=0;
+
+        FOR(i,n)
+        {
+            int x;
+            cin>>x;
+            v.pb(x);
+            if(x%2==0)even++;
+            else odd++;
+        }
+
+        sort(v.begin(),v.end());
+
+        if(even%2==0 and odd%2==0)
+        {
+            cout<<"YES"<<NL;
+            continue;
+        }
+
+        int bingo=0;
+
+        for(int i=1;i<n;i++)
+        {
+            if( (v[i]%2 != v[i-1]%2) and (v[i]-v[i-1])==1 )
+            {
+                bingo=1;
+                break;
+            }
+        }
+
+        if(bingo)cout<<"YES"<<NL;
+        else cout<<"NO"<<NL;
+
+
+
+    }
 }
+

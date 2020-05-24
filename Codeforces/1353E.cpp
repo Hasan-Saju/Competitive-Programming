@@ -50,7 +50,8 @@ ll BMod(ll B,ll P,ll M)
 ll POW(ll  B,ll P)
 {
     ll R=1;
-    while(P) {
+    while(P)
+    {
         if(P&1)
             R=R*B;
         B=B*B;
@@ -71,7 +72,40 @@ ll lcm(ll a,ll b)
 
 }
 
+
 int main()
 {
     fast
+    int t;
+    cin>>t;
+
+    while(t--)
+    {
+        int n,k;
+        cin>>n>>k;
+        string s;
+        cin>>s;
+        int total=0;
+
+        FOR(i,n)
+        {
+            if(s[i]=='1')total++;
+        }
+
+        int ans=total;
+        for(int i=0;i<k;i++)
+        {
+            int diff=0;
+            for(int j=i;j<n;j=j+k)
+            {
+                if(s[j]=='1')diff++;
+                else diff--;
+                diff=max(diff,0);
+                ans=min(ans,total-diff);
+            }
+        }
+        cout<<ans<<NL;
+
+
+    }
 }

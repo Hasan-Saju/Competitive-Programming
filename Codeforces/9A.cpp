@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 using namespace std;
 #define ll          long long
@@ -50,7 +51,8 @@ ll BMod(ll B,ll P,ll M)
 ll POW(ll  B,ll P)
 {
     ll R=1;
-    while(P) {
+    while(P)
+    {
         if(P&1)
             R=R*B;
         B=B*B;
@@ -74,4 +76,18 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int x,y;
+    cin>>x>>y;
+    int last= 6-max(x,y)+1;
+    if(last==6)
+        cout<<"1/1";
+    else
+    {
+        if(last%2==0)
+            cout<<last/2<<"/"<<6/2;
+        else if(last%3==0)
+            cout<<last/3<<"/"<<6/3;
+        else
+            cout<<last<<"/"<<6;
+    }
 }
