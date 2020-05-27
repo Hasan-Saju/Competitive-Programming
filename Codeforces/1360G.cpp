@@ -50,7 +50,8 @@ ll BMod(ll B,ll P,ll M)
 ll POW(ll  B,ll P)
 {
     ll R=1;
-    while(P) {
+    while(P)
+    {
         if(P&1)
             R=R*B;
         B=B*B;
@@ -84,10 +85,82 @@ int main()
         cin>>n>>m>>a>>b;
         memset(f,0,sizeof(f));
 
-        for(int i=1;i<=n;i++)
-        {
+       int i=1,mot=0,rowChange=0;
 
-        }
+            for(int j=1; ; j++)
+            {
+                mot++;
+                rowChange++;
+
+                f[i][j]=1;
+                if(rowChange==a) rowChange=0, i++;
+                if(mot== n*a )break;
+                if(j==m)j=0;
+
+            }
+
+//            for(int i=1;i<=n;i++)
+//            {
+//                for(int j=1;j<=m;j++)
+//                    cout<<f[i][j];
+//                cout<<NL;
+//            }
+
+    /*   0 0 0
+         1 0 0
+         0 1 0      */
+
+         int hobena=0;
+
+            for(int i=1; i<=m ;i++)
+            {
+                int kount=0;
+                for(int j=1; j<=n; j++)
+                {
+                    if(f[j][i]==1)
+                        kount++;
+                }
+                if(kount!=b)
+                {
+                    hobena=1;
+                    break;
+                }
+            }
+
+            int hobena2=0;
+             for(int i=1; i<=n ;i++)
+            {
+                int kount=0;
+                for(int j=1; j<=m; j++)
+                {
+                    if(f[i][j]==1)
+                        kount++;
+                }
+                if(kount!=a)
+                {
+                    hobena2=1;
+                    break;
+                }
+            }
+
+
+            if(hobena || hobena2)
+            {
+                cout<<"NO"<<NL;
+                continue;
+            }
+
+            cout<<"YES"<<NL;
+
+            for(int i=1;i<=n;i++)
+            {
+                for(int j=1;j<=m;j++)
+                    cout<<f[i][j];
+                cout<<NL;
+            }
+
+
+
     }
 }
 

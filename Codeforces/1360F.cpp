@@ -71,6 +71,33 @@ ll lcm(ll a,ll b)
 
 }
 
+
+char field[200][200];
+char ans[100];
+int n,m;
+
+bool check()
+{
+    int diff=0;
+    for(int i=1;i<=n;i++)
+    {
+        diff=0;
+        for(int j=1;j<=m;j++)
+        {
+            if(field[i][j] != ans[j])
+                diff++;
+        }
+        if(diff>1) return false;
+
+
+    }
+    return true;
+}
+
+
+
+
+
 int main()
 {
     fast
@@ -78,26 +105,61 @@ int main()
     cin>>t;
     while(t--)
     {
-        int n,len;
-        cin>>n>>len;
-        vector<string>v;
-
-        FOR(i,n)
+        cin>>n>>m;
+        for(int i=1;i<=n;i++)
         {
             string s;
             cin>>s;
-            v.pb(s);
+
+            for(int j=0;j<m;j++)
+                field[i][j+1]=s[j];
         }
 
-        FOR(i,len)
+        //solution part
+
+        for(int i=1;i<=m;i++)
+            ans[i]=field[1][i];
+           // cout<<ans[1]<<" * \n";
+
+            int flag=0;
+        for(int i=1;i<=m;i++)
         {
-
+            for(char c='a'; c<='z'; c++ )
+            {
+                ans[i]=c;
+                if(check())
+                {
+                     for(int i=1;i<=m;i++)
+                        cout<<ans[i];
+                        cout<<NL;
+                     flag=1;
+                     break;
+                }
+            }
+            if(flag)break;
+            ans[i]=field[1][i];
         }
-
-
-
+        if(!flag)cout<<"-1"<<NL;
 
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
