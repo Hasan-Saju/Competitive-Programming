@@ -74,6 +74,19 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,m,k;
+        cin>>n>>m>>k;
+        int card=n/k;
+        int ami=min(card,m);
 
 
+        int arekjon= ceil((double)(m-ami)/(k-1));
+         if(m>=ami)
+            cout<<ami-arekjon<<NL;
+         else cout<<ami<<NL;
+    }
 }

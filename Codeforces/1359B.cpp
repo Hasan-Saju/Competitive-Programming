@@ -74,6 +74,50 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,m,a,b;
+        cin>>n>>m>>a>>b;
+        int bu=b/2;
+        int cost=0;
+        int flag=0;
+        if(a<=bu)
+        {
+            cost=a;
+            flag=1;
+        }
+        else cost=b;
+
+        int jora=0,eka=0;
+        FOR(i,n)
+        {
+            string s;
+            cin>>s;
+            for(int i=0;i<s.size();i++)
+            {
+                if(i+1<s.size() and s[i]==s[i+1] and s[i]=='.')
+                {
+                    jora++;
+                    i++;
+                }
+                else if(s[i]=='.')
+                    eka++;
+
+            }
+        }
+        int ans=0;
+
+        if(!flag)ans=(cost*jora)+(eka*a);
+        else ans=cost*((jora*2)+eka);
+
+        //cout<<ans<<" "<<jora<<" "<<eka<<cost<< NL;
+
+        cout<<ans<<NL;
 
 
+
+    }
 }
+

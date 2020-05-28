@@ -50,7 +50,8 @@ ll BMod(ll B,ll P,ll M)
 ll POW(ll  B,ll P)
 {
     ll R=1;
-    while(P) {
+    while(P)
+    {
         if(P&1)
             R=R*B;
         B=B*B;
@@ -71,9 +72,63 @@ ll lcm(ll a,ll b)
 
 }
 
+int check(int n)
+{
+    if(n<0)
+        return 0;
+}
+
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,q;
+        cin>>n>>q;
+        vi v;
+        vi Gcd(n+1);
+        vi SGcd(n+2);
+
+        FOR(i,n)
+        {
+            int x;
+            cin>>x;
+            v.pb(x);
+        }
+        Gcd[0]=0;
+        int g=0;
+
+        for(int i=0; i<n; i++)
+        {
+            g=gcd(g,v[i]);
+            Gcd[i+1]=g;
+
+        }
+
+        //
+
+        SGcd[n+1]=0;
+        SGcd[0]=0;
+        g=0;
+
+        for(int i=n-1; i>=0; i--)
+        {
+            g=gcd(g,v[i]);
+            SGcd[i+1]=g;
+        }
 
 
+
+
+        FOR(i,q)
+        {
+            int a,b;
+            cin>>a>>b;
+                cout<<gcd(Gcd[a-1],SGcd[b+1])<<NL;
+        }
+
+
+    }
 }

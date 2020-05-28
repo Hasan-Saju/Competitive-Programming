@@ -50,7 +50,8 @@ ll BMod(ll B,ll P,ll M)
 ll POW(ll  B,ll P)
 {
     ll R=1;
-    while(P) {
+    while(P)
+    {
         if(P&1)
             R=R*B;
         B=B*B;
@@ -74,29 +75,62 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
-    int n,chuti;
-    cin>>n>>chuti;
-    vi v;
 
-    int ind=0;
-    int boro=-999;
+    ll n,vac;
+    cin>>n>>vac;
+
+    vector<ll> input,len(2*n),sum(2*n);
 
     FOR(i,n)
     {
-        int x;
+        ll x;
         cin>>x;
-        if(x>boro)
-            ind=i;
-        boro=max(boro,x);
-
-        v.pb(x);
+        input.pb(x);
     }
 
-    if
-    int ans= (boro*(boro+1))/2;
+    len[0]=input[0];
+    for(ll i=1; i<2*n; i++)
+    {
+        len[i]=len[i-1]+input[i%n];
+    }
+
+    sum[0]= (input[0]*(input[0]+1))/2;
+    for(ll i=1; i<2*n; i++)
+    {
+        sum[i]=sum[i-1] + (input[i%n]*(input[i%n]+1))/2;
+    }
+
+    ll ans=-99999, days,extra,tempAns;
+    for(ll i=0; i<2*n; i++)
+    {
+        if(len[i]>= vac)
+        {
+            //cout<<sum[i]<<" "<<len[i]<<NL;
+            ll ind= upper_bound(len.begin(),len.end(), len[i]-vac )-len.begin();
+            ind=ind-1;                   //perfect jaygay anlam
 
 
+            if(ind<0)
+                days= len[i]-0;
+            else
+                days= len[i]-len[ind];
 
+             extra= days-vac;
+
+
+            if(ind<0)
+            tempAns= sum[i] - 0 - (extra*(extra+1))/2;
+            else
+            tempAns= sum[i] - sum[ind] - (extra*(extra+1))/2;
+
+
+            //cout<<tempAns<<" a "<<ans<<NL;
+            ans=max(ans,tempAns);
+
+        }
+    }
+
+    cout<<ans;
 
 }
 
