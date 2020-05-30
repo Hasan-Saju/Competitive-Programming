@@ -77,5 +77,46 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int n;
+    cin>>n;
+    vector<ll> v;
+
+    FOR(i,n)
+    {
+        int x;
+        cin>>x;
+        v.pb(x);
+    }
+   // sort(v.begin(),v.end());
+
+    ll sum=0;
+    int ele;
+
+    for(int i=n-1;i>=0;i--)
+    {
+        if(i==n-1)
+            {
+            sum+=v[i];
+            ele=v[i];
+            }
+        if(i==n-1)
+            continue;
+
+        if(v[i]>=ele)
+        {
+            ele=max((ele-1),0);
+            sum=sum+ele;
+        }
+        else
+        {
+            sum+=v[i];
+            ele=v[i];
+        }
+
+        //cout<<sum<<" "<<ele<<NL;
+
+    }
+    cout<<sum;
 
 }
+

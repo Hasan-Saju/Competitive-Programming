@@ -10,12 +10,10 @@ using namespace std;
 #define pi          pair<int,int>
 #define FOR(i,n)    for(int i=0;i<n;i++)
 
-#define min3(a,b,c)         min(a,min(b,c))
-#define max3(a,b,c)         max(a,max(b,c))
-#define min4(a,b,c,d)       min(a,min(b,min(c,d)))
-#define max4(a,b,c,d)       max(a,max(b,max(c,d)))
-#define max5(a,b,c,d,e)     max(max3(a,b,c),max(d,e))
-#define min5(a,b,c,d,e)     min(min3(a,b,c),min(d,e))
+#define min3(a,b,c)     min(a,min(b,c))
+#define max3(a,b,c)     max(a,max(b,c))
+#define min4(a,b,c,d)   min(a,min(b,min(c,d)))
+#define max4(a,b,c,d)   max(a,max(b,max(c,d)))
 
 #define fast        ios_base::sync_with_stdio(false);cin.tie(NULL);
 #define SP(x)       fixed<<setprecision(x)
@@ -77,5 +75,52 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int n;
+    cin>>n;
+    vector<ll> v(n),check(n),cum(n);
+    ll sum=0;
+
+    FOR(i,n)
+    {
+        int x;
+        cin>>x;
+        sum+=x;
+        v[i]=x;
+    }
+    if(sum%3!=0)
+    {
+        cout<<"0";
+        return 0;
+    }
+
+    sum/=3;
+    ll s=0;
+
+    for(int i=n-1; i>=0; i--)
+    {
+        s+=v[i];
+        if(s==sum)
+            check[i]=1;
+        else check[i]=0;
+    }
+
+    cum[n-1]=check[n-1];
+
+    for(int i=n-2; i>=0; i--)
+    {
+        cum[i]=cum[i+1]+check[i];
+    }
+
+    ll ans=0;
+    s=0;
+    for(int i=0; i<n-2; i++)
+    {
+
+        s+=v[i];
+        if(s==sum)
+        ans+=cum[i+2];
+    }
+    cout<<ans;
 
 }
+

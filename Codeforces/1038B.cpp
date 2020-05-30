@@ -77,5 +77,27 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int n;
+    cin>>n;
+    if(n<=2)
+    {
+        cout<<"No";
+        bye;
+    }
+
+    cout<<"Yes"<<NL;
+    ll sum=(n*(n+1))/2;
+
+    int sp=(n+1)/2;   ///n/2 ja (n+1)/2 o same
+
+    cout<<"1 "<<sp<<NL<<n-1<<" ";
+    int i=1;
+    while(i<=n)
+    {
+        if(i!=sp)
+            cout<<i<<" ";
+        i++;
+    }
 
 }
+

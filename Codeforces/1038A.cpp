@@ -77,5 +77,35 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int n,k;
+    cin>>n>>k;
+    string s;
+    cin>>s;
+    int ara[k];
+    memset(ara,0,sizeof(ara));
+
+    int ans=INT_MAX;
+
+    FOR(i,s.size())
+    {
+        int z=s[i]-'A';
+        ara[z]++;
+
+    }
+    int flag=0;
+
+    FOR(i,k)
+    {
+        if(ara[i]!=0)
+        ans=min(ans,ara[i]);
+        else flag=1;
+    }
+    if(flag)
+    {
+        cout<<"0";
+        return 0;
+    }
+    cout<<ans*k;
 
 }
+

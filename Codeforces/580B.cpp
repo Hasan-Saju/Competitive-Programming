@@ -77,5 +77,39 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int n,d;
+    cin>>n>>d;
+    vector<pair<ll,ll> >v;
+    FOR(i,n)
+    {
+        int mny,frd;
+        cin>>mny>>frd;
+        v.pb({mny,frd});
+    }
+    sort(v.begin(),v.end());
+
+    ll ans=-9999;
+    ll first=0,total=0;
+    for(int i=0; i<n; i++)
+    {
+        if(abs(v[i].ff-v[first].ff)<d)
+        {
+            total+=v[i].ss;
+            ans=max(ans,total);
+        }
+        else
+        {
+            total-=v[first].ss;
+            first++;
+            i--;
+        }
+    }
+
+cout<<ans;
 
 }
+
+
+
+
+
