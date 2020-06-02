@@ -77,17 +77,17 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
-    int t;
+    ll t;
     cin>>t;
-    vi v;
+    vector<ll> v;
     while(t--)
     {
-        int n,k;
+        ll n,k;
         cin>>n>>k;
-        int even=0,odd=0;
+        ll even=0,odd=0;
         FOR(i,n)
         {
-            int x;
+            ll x;
             cin>>x;
             if(x%2==0)even++;
             else odd++;
@@ -95,6 +95,7 @@ int main()
         }
         if(odd==0)cout<<"No"<<NL;
         else if(even+odd==k and odd%2==0)cout<<"No"<<NL;
+        else if(even==0 and k%2==0)cout<<"No"<<NL;
         else cout<<"Yes"<<NL;
 
         //else

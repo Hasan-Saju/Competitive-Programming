@@ -74,53 +74,69 @@ ll lcm(ll a,ll b)
 
 }
 
+
+
 int main()
 {
     fast
     int t;
     cin>>t;
-    int ans=0,kount=0;
     while(t--)
     {
-        string s;
-        cin>>s;
-        int siz=s.size();
-         kount=0;
+        ll a,b,n;
+        cin>>a>>b>>n;
+        vector<ll>p;
 
-         int lef=0,righ=0;
-        for(int i=0;i<siz;i++)
+        ll secNumber=a-b;
+
+        for(ll i=1; i<=sqrt(secNumber); i++)
         {
-            if(s[i]=='1')lef++;
-            else break;
+            if(secNumber%i==0)
+            {
+                p.pb(i);
+                p.pb(secNumber/i);              ///candidates for gcd
+            }
+        }
+
+        sort(p.begin(),p.end());
+        reverse(p.begin(),p.end());
+
+        //a^n
+        int flag=0;
+
+        ll mod=1000000007;
+
+
+        if(secNumber==0 )
+        {
+            ll an= (BMod(a,n,mod));
+            ll bn= (BMod(b,n,mod));
+
+            ll answer=(an+bn)%mod;
+            cout<<answer<<NL;
+            continue;
+
 
         }
-        //cout<<"out1"<<NL;
-      //  cout<<kount<<NL;
-      for(int i=s.size()-1;i>=0;i--)
-      {
-           if(s[i]=='1')righ++;
-           else break;
-      }
-             // cout<<"out2"<<NL;
-      for(int i=0;i<siz;i++)
-       {
-           if(s[i]=='1')kount++;
 
-       }
-           // cout<<"out1"<<NL;
-    //cout<<lef<<" "<<righ<<NL;
+        for(int i=0; i<p.size(); i++)
+        {
+            ll an= (BMod(a,n,p[i]));
+            ll bn= (BMod(b,n,p[i]));
+            ll check= ((an%p[i])+(bn%p[i]))%p[i];
 
-        if(lef>=righ)
-            ans=kount-lef;
-        else ans=kount-righ;
-       //  ans=0;
+            if(!check)
+            {
+                cout<<p[i]<<NL;
+                flag=1;
+                break;
+            }
+        }
+        if(!flag)
+            cout<<"1"<<NL;
 
 
 
-
-
-        cout<<ans<<NL;
     }
 
 }
-
