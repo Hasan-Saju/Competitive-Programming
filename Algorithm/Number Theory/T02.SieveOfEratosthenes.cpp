@@ -5,11 +5,11 @@ bool prime[90000001];
 void sieve()
 {
     int maxx=90000000;    //maxx porjonto prime ber korbo
-    memset(maxx,true,sizeof(maxx));     //shob prime first a dhore nisi
+    memset(prime,true,sizeof(prime));     //shob prime first a dhore nisi
 
     prime[0]=prime[1]=false;
 
-    for(int i=2; i<=sqrt(maxx), i++)
+    for(int i=2; i<=sqrt(maxx); i++)
     {
         if(prime[i]==true)
         {

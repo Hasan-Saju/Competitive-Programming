@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll          long long
+#define ull         unsigned long long
 #define pb          push_back
 #define mp          make_pair
 #define ff          first
@@ -26,16 +27,12 @@ using namespace std;
 #define bye         return 0
 #define ok          cout<<"OK"<<endl
 #define NL          "\n"
+#define mod         1000000007
 
 //lower_bound == Shoman othoba prothom boro element ta return korbe//iterator return kore
 //upper bound mane first boro element return korbe
 //string s(n,'a');
 //ans+=string(r,'R');
-
-const int N=1005;
-int ara[N][N];
-int tree[N][N];
-int max_x,max_y;
 
 ll Digits(ll a)
 {
@@ -78,88 +75,43 @@ ll lcm(ll a,ll b)
     return a*b/gcd(a,b);
 
 }
+ll dp[2000008];
 
-int query(int x, int y)
+void factorial()
 {
-    int sum=0;
-    while(x>0)
+    dp[0]=dp[1]=1;
+    ll N=2000002;
+
+    for(ll i=2; i<=N; i++)
     {
-        int y1=y;
-        while(y1>0)
-        {
-            sum += tree[x][y1];
-            y1 -= ( y1 &(-y1) );
-        }
-        x -= ( x&(-x) );
+        dp[i]= (i%mod * dp[i-1]%mod)%mod;
     }
-    return sum;
-}
-
-void update(int x, int y, int val)
-{
-
-    while(x<=max_x)
-    {
-        int y1=y;
-        while(y1<=max_y)
-        {
-            tree[x][y1] += val;
-            y1 +=( y1 & (-y1) );
-        }
-        x += ( x & (-x) );
-    }
-}
-
-int sum(int x1, int y1, int x2, int y2)     ///expected portion
-{
-        return query(x2,y2)-query(x2,y1-1)-query(x1-1,y2)+query(x1-1,y1-1);
 }
 
 int main()
 {
-    // fast
+    //fast
+    factorial();
     int t;
-    cin>>t;
+    scanf("%d",&t);
 
-    FOR(j,t)
+    FOR(i,t)
     {
-        printf("Case %d:\n",j+1);
-        int n;
-        scanf("%d",&n);
-        max_x=max_y=1001;
+        printf("Case %d: ",i+1);
+        ll n,k;
+        scanf("%lld %lld",&n,&k);
 
-        FOR(i,n)
-        {
-            int ca;
-            scanf("%d",&ca);
+        ll up= dp[n+k-1];
+        ll down= (dp[n]%mod * dp[k-1]%mod)%mod;
+        down = BMod(down,mod-2,mod);
+        ll ans = (up%mod * down%mod)%mod;
 
-            switch(ca)
-            {
-            case 0:
-                int x,y;
-                scanf("%d %d",&x,&y);
-                x++,y++;
-
-                if(!ara[x][y])
-                {
-                    ara[x][y]=1;
-                    update(x,y,1);
-                }
-                break;
-
-            case 1:
-                int x1,y1,x2,y2;
-                scanf("%d %d %d %d",&x1,&y1,&x2,&y2);
-                x1++,y1++,x2++,y2++;
-
-                printf("%d\n",sum(x1,y1,x2,y2));
-                break;
-
-            }
-        }
-        memset(tree,0,sizeof(tree));
-        memset(ara,0,sizeof(ara));
+        printf("%lld\n",ans);
     }
 
+
 }
+
+///theory :
+///http://light-online-judge.blogspot.com/2013/02/solution-of-light-oj-1102-problem-makes.html
 

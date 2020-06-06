@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll          long long
+#define ull         unsigned long long
 #define pb          push_back
 #define mp          make_pair
 #define ff          first
@@ -26,16 +27,15 @@ using namespace std;
 #define bye         return 0
 #define ok          cout<<"OK"<<endl
 #define NL          "\n"
-
+#define mod         1000000007
+#define siz         1000000
 //lower_bound == Shoman othoba prothom boro element ta return korbe//iterator return kore
 //upper bound mane first boro element return korbe
 //string s(n,'a');
 //ans+=string(r,'R');
 
-const int N=1005;
-int ara[N][N];
-int tree[N][N];
-int max_x,max_y;
+int prime[1000001];
+vector<int>pl;
 
 ll Digits(ll a)
 {
@@ -79,87 +79,82 @@ ll lcm(ll a,ll b)
 
 }
 
-int query(int x, int y)
+void sieve()
 {
-    int sum=0;
-    while(x>0)
+    int maxx=1000009;
+    memset(prime,true,sizeof(prime));
+
+    prime[0]=prime[1]=false;
+
+    for(int i=2; i<=sqrt(maxx); i++)
     {
-        int y1=y;
-        while(y1>0)
+        if(prime[i]==true)
         {
-            sum += tree[x][y1];
-            y1 -= ( y1 &(-y1) );
+            for(int j=i*i; j<=maxx; j=j+i)
+                prime[j]=false;
         }
-        x -= ( x&(-x) );
     }
-    return sum;
-}
 
-void update(int x, int y, int val)
-{
+    for(int i=2; i<=maxx; i++)
+        if(prime[i])
+            pl.pb(i);
 
-    while(x<=max_x)
-    {
-        int y1=y;
-        while(y1<=max_y)
-        {
-            tree[x][y1] += val;
-            y1 +=( y1 & (-y1) );
-        }
-        x += ( x & (-x) );
-    }
-}
 
-int sum(int x1, int y1, int x2, int y2)     ///expected portion
-{
-        return query(x2,y2)-query(x2,y1-1)-query(x1-1,y2)+query(x1-1,y1-1);
 }
 
 int main()
 {
-    // fast
+    //fast
     int t;
-    cin>>t;
-
-    FOR(j,t)
+    scanf("%d",&t);
+    sieve();
+    FOR(i,t)
     {
-        printf("Case %d:\n",j+1);
-        int n;
-        scanf("%d",&n);
-        max_x=max_y=1001;
+        printf("Case %d: ",i+1);
+        ll n,m;
+        scanf("%lld %lld",&n,&m);
 
-        FOR(i,n)
+        vector<pair<ll,ll> >combo;
+
+        for(int j=0; j<pl.size() and pl[j]<=sqrt(n); j++)
         {
-            int ca;
-            scanf("%d",&ca);
-
-            switch(ca)
+            int k=0;
+            while(n%pl[j]==0)
             {
-            case 0:
-                int x,y;
-                scanf("%d %d",&x,&y);
-                x++,y++;
-
-                if(!ara[x][y])
-                {
-                    ara[x][y]=1;
-                    update(x,y,1);
-                }
-                break;
-
-            case 1:
-                int x1,y1,x2,y2;
-                scanf("%d %d %d %d",&x1,&y1,&x2,&y2);
-                x1++,y1++,x2++,y2++;
-
-                printf("%d\n",sum(x1,y1,x2,y2));
-                break;
-
+                n=n/pl[j];
+                k++;
             }
+            if(k!=0)
+                combo.pb(mp(pl[j],k));
+          //  if(k!=0)cout<<pl[j]<<" div "<<k<<" "<<n<<NL;
         }
-        memset(tree,0,sizeof(tree));
-        memset(ara,0,sizeof(ara));
+        if(n!=1)
+            combo.pb(mp(n,1));
+        //if(n!=1)cout<<n<<NL;
+
+        ll ans=1;
+        for(int j=0;j<combo.size();j++)
+        {
+            ll f=combo[j].ff;
+            ll s=combo[j].ss;
+
+            ll temp= ((BMod(f,s*m+1,mod)-1 )+mod)%mod;
+            temp=(temp * BMod(f-1,mod-2,mod))%mod;               ///formula of geometric series
+            ans=(ans%mod*temp%mod)%mod;
+
+            //cout<<f<<" amu "<<s<<" "<<temp<<NL;
+           // ans=(ans *( (1-BMod(f,s*m,mod) )/(1-f) ));
+            //cout<<ans<<NL;
+        }
+
+
+       // cout<<ans<<NL;
+        printf("%lld\n",ans);
+        combo.clear();
+
     }
 
 }
 
+
+  ///main theory  link :  https://www.math.upenn.edu/~deturck/m170/wk3/lecture/sumdiv.html#:~:text=In%20general%2C%20if%20you%20have,multiply%20all%20these%20sums%20together!
