@@ -1,6 +1,5 @@
 #include<bits/stdc++.h>
 using namespace std;
-
 #define ll          long long
 #define ull         unsigned long long
 #define pb          push_back
@@ -76,8 +75,68 @@ ll lcm(ll a,ll b)
 
 }
 
-int main()
+const int N=115;
+vector<int>V[N];
+int ara[N];
+
+void PreCalculation()
 {
-    fast
+    for(int i=2;i<=100;i++)
+    {
+        int tem=i;
+        while(tem%2==0)
+            V[i].pb(2), tem/=2;
+
+        for(int j=3;j<=sqrt(i) and tem>1;j+=2)
+            while(tem%j==0)
+                V[i].pb(j), tem/=j;
+
+         if(tem>1)V[i].pb(tem);
+
+    }
+}
+
+void ans(int kase, int n)
+{
+    memset(ara,0,sizeof(ara));
+
+    for(int i=2;i<=n;i++)
+    {
+        for(int j=0;j<V[i].size();j++)
+            ara[V[i][j]]++;
+    }
+
+    int flag=0;
+    for(int i=2;i<=n;i++)
+    {
+        if(ara[i]>0)
+        {
+            if(!flag)
+                printf("Case %d: %d = %d (%d)",kase+1,n,i,ara[i]),flag=1;
+            else
+                printf(" * %d (%d)",i,ara[i]);
+        }
+    }
+    printf("\n");
 
 }
+
+int main()
+{
+    //fast
+    fWrite
+
+    PreCalculation();
+
+    int t;
+    scanf("%d",&t);
+
+    FOR(i,t)
+    {
+        int n;
+        scanf("%d",&n);
+        ans(i,n);
+    }
+
+}
+

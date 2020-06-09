@@ -76,8 +76,67 @@ ll lcm(ll a,ll b)
 
 }
 
+bool prime[1000001];
+vector<ll>pl;
+
+void sieve()
+{
+    int maxx=1000000;
+    memset(prime,true,sizeof(prime));
+
+    prime[0]=prime[1]=false;
+
+    for(int i=4;i<=maxx;i+=2)
+        prime[i]=false;
+
+    for(int i=3; i*i<=maxx ; i+=2)
+    {
+        if(prime[i]==true)
+        {
+            for(int j=i*i; j<=maxx; j+=2*i)
+                prime[j]=false;
+        }
+    }
+
+    pl.pb(2);
+    for(int i=3;i<=maxx;i+=2)
+        if(prime[i])
+        pl.pb(i);
+
+
+}
+
 int main()
 {
-    fast
+    //fast
+    sieve();
+    int t;
+    scanf("%d",&t);
+
+    for(int j=1; j<=t; j++)
+    {
+        ll n,temp;
+        int ans=1;
+        scanf("%lld",&n);
+        temp=n;
+
+
+        for(int i=0;i<pl.size() and pl[i]<=sqrt(temp) ;i++)
+        {
+            if(temp%pl[i]==0)
+            {
+                int k=0;
+
+                while(temp%pl[i]==0)
+                    k++, temp/=pl[i];
+                if(k!=0)ans*=(k+1);
+            }
+        }
+
+        if(temp>1)ans*=2;
+
+        printf("Case %d: %d\n",j,ans-1);        /// 1 base means only 0 (so kono number e create hobe na)
+
+    }
 
 }

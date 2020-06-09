@@ -3,7 +3,7 @@ using namespace std;
 
 int phi[1000001];       ///to store number of phi in each index
 
-void ETF_Calculation(int maxN)
+void ETF_Calculation()
 {
     int maxN=1000000;
 
@@ -16,8 +16,8 @@ void ETF_Calculation(int maxN)
         {
             for(int j=i; j<=maxN; j+=i)
             {
-                phi[j]*=(i-1);          /// (p-1)diye gun, p diye vag
                 phi[j]/=i;
+                phi[j]*=(i-1);          /// (p-1)diye gun, p diye vag
             }
         }
     }

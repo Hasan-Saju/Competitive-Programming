@@ -1,6 +1,5 @@
 #include<bits/stdc++.h>
 using namespace std;
-
 #define ll          long long
 #define ull         unsigned long long
 #define pb          push_back
@@ -76,8 +75,60 @@ ll lcm(ll a,ll b)
 
 }
 
-int main()
+int phi[5000005];
+ull pref[5000005];
+
+void ETF_Calculation()
 {
-    fast
+    ll maxN=5000002;
+    for(ll i=1;i<=maxN;i++)
+        phi[i]=i;
+
+    for(ll i=2;i<=sqrt(maxN);i++)
+    {
+        if(phi[i]==i)
+        {
+            for(ll j=i;j<=maxN;j+=i)
+            {
+                phi[j]/=i;
+                phi[j]*=(i-1);
+            }
+        }
+    }
+}
+
+void prefix()
+{
+    ll maxN=5000002;
+    ull temp;
+    for(ll i=1;i<=maxN;i++)
+    {
+        temp=phi[i];
+        pref[i]=pref[i-1]+((ull)temp*temp);
+    }
 
 }
+
+int main()
+{
+    //fast
+    ETF_Calculation();
+    prefix();
+
+    ll t;
+    scanf("%lld",&t);
+    for(ll i=1;i<=t;i++)
+    {
+        ll a,b;
+        scanf("%lld %lld",&a,&b);
+        ull ans= pref[b]-pref[a-1];
+
+       // FOR(i,21)
+       // cout<<pref[i]<<" "<<phi[i]<<NL;
+       cout<<phi[b]<<" phi "<<phi[a-1]<<NL;
+        cout<<pref[b]<<" "<<pref[a-1]<<NL;
+        printf("Case %lld: %llu\n",i,ans);
+    }
+
+}
+

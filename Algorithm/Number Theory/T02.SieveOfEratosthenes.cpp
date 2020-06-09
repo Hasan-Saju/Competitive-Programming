@@ -9,11 +9,14 @@ void sieve()
 
     prime[0]=prime[1]=false;
 
-    for(int i=2; i<=sqrt(maxx); i++)
+    for(int i=4;i<=maxx;i+=2)
+        prime[i]=false;
+
+    for(int i=3; i*i<=maxx; i+=2)
     {
         if(prime[i]==true)
         {
-            for(int j=i*i; j<=maxx; j=j+i)
+            for(int j=i*i; j<=maxx; j+=2*i)
                 prime[j]=false;                 //era prime na
         }
     }
