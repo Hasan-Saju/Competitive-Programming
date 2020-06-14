@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
+
 #define ll          long long
+#define ull         unsigned long long
 #define pb          push_back
 #define mp          make_pair
 #define ff          first
@@ -76,37 +78,23 @@ ll lcm(ll a,ll b)
 
 int main()
 {
-    fast
+    //fast
     int t;
-    cin>>t;
-    int ans=0,kount=0;
-    while(t--)
+    scanf("%d",&t);
+
+    FOR(k,t)
     {
-        string s;
-        cin>>s;
-        int zero=0,one=0,s0=0,s1=0;
-
-        FOR(i,s.size())
+        ll n;
+        scanf("%lld",&n);
+        ll ans=0,j=0;
+        for(ll i=1;i<=n;i+=(j-i+1))
         {
-            if(s[i]=='0')
-                zero++;
-            else
-                one++;
+            int k=n/i;                       ///value
+            j=n/k;                          ///j porjonto val pabo er por onno val pabo
+            ans+=k*(j-i+1);                 ///j porjontio val, i porjonto ager val so val sonkha =(j-i)+1
         }
-        int ans=min(zero,one);
-
-        FOR(i,s.size())
-        {
-            if(s[i]=='0')
-                s0++, zero--;
-            else
-                s1++, one--;
-
-            ans=min(ans,s0+one);
-            ans=min(ans,s1+zero);
-        }
-
-        cout<<ans<<NL;
+        //cout<<ans<<NL;
+        printf("Case %d: %lld\n",k+1,ans);
     }
 
 }

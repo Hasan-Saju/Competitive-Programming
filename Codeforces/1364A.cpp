@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
+
 #define ll          long long
+#define ull         unsigned long long
 #define pb          push_back
 #define mp          make_pair
 #define ff          first
@@ -79,35 +81,55 @@ int main()
     fast
     int t;
     cin>>t;
-    int ans=0,kount=0;
     while(t--)
     {
-        string s;
-        cin>>s;
-        int zero=0,one=0,s0=0,s1=0;
+        int n,x;
+        cin>>n>>x;
+        vi v,fr(n),ba(n);
 
-        FOR(i,s.size())
+        FOR(i,n)
         {
-            if(s[i]=='0')
-                zero++;
-            else
-                one++;
-        }
-        int ans=min(zero,one);
-
-        FOR(i,s.size())
-        {
-            if(s[i]=='0')
-                s0++, zero--;
-            else
-                s1++, one--;
-
-            ans=min(ans,s0+one);
-            ans=min(ans,s1+zero);
+            int y;
+            cin>>y;
+            v.pb(y);
         }
 
+        int ans=0;
+        fr[0]=v[0];
+        for(int i=1; i<v.size(); i++)
+           {
+               fr[i]=fr[i-1]+v[i];
+          //     cout<<fr[i]<<" ";
+           }
+
+        ba[n-1]=v[n-1];
+        for(int i=v.size()-2; i>=0; i--)
+            ba[i]=ba[i+1]+v[i];
+
+        for(int i=n-1; i>=0; i--)
+            if(fr[i]%x!=0)
+            {
+              //  cout<<fr[i]<<"t ";
+                ans=i+1;
+                break;
+            }
+
+        for(int i=0; i<ba.size(); i++)
+            if(ba[i]%x!=0)
+            {
+               // cout<<ba[i]<<"t "<<n-i+1;
+                ans=max(ans,n-i);
+                break;
+            }
+        if(ans>0)
         cout<<ans<<NL;
-    }
+        else
+            cout<<"-1"<<NL;
+        v.clear();
+        ba.clear();
+        fr.clear();
 
+
+    }
 }
 

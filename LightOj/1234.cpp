@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
+
 #define ll          long long
+#define ull         unsigned long long
 #define pb          push_back
 #define mp          make_pair
 #define ff          first
@@ -74,39 +76,37 @@ ll lcm(ll a,ll b)
 
 }
 
+double gama=0.57721566490;
+double ara[1000001];
+
+void pre()
+{
+    for(int i=1;i<=1000000;i++)
+    {
+        ara[i]=(double)ara[i-1]+(double)1/i;
+    }
+}
+
 int main()
 {
-    fast
+    //fast
+   // fWrite
+   pre();
     int t;
-    cin>>t;
-    int ans=0,kount=0;
-    while(t--)
+    scanf("%d",&t);
+    FOR(i,t)
     {
-        string s;
-        cin>>s;
-        int zero=0,one=0,s0=0,s1=0;
+        int n;
+        scanf("%d",&n);
+        double harmon;
 
-        FOR(i,s.size())
-        {
-            if(s[i]=='0')
-                zero++;
-            else
-                one++;
-        }
-        int ans=min(zero,one);
+        if(n<=1000000)
+            harmon=ara[n];
+        else
+            harmon= log((double)n+0.5)+gama;//+((double)1/(2*n))-((double)1/(12*(n*n)));
 
-        FOR(i,s.size())
-        {
-            if(s[i]=='0')
-                s0++, zero--;
-            else
-                s1++, one--;
-
-            ans=min(ans,s0+one);
-            ans=min(ans,s1+zero);
-        }
-
-        cout<<ans<<NL;
+        //cout<<SP(10)<<harmon<<NL;
+        printf("Case %d: %.10f\n",i+1,harmon);
     }
 
 }

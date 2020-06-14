@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
+
 #define ll          long long
+#define ull         unsigned long long
 #define pb          push_back
 #define mp          make_pair
 #define ff          first
@@ -79,35 +81,29 @@ int main()
     fast
     int t;
     cin>>t;
-    int ans=0,kount=0;
+
     while(t--)
     {
-        string s;
-        cin>>s;
-        int zero=0,one=0,s0=0,s1=0;
-
-        FOR(i,s.size())
+        int n;
+        cin>>n;
+        vi v,ans;
+        FOR(i,n)
         {
-            if(s[i]=='0')
-                zero++;
-            else
-                one++;
-        }
-        int ans=min(zero,one);
-
-        FOR(i,s.size())
-        {
-            if(s[i]=='0')
-                s0++, zero--;
-            else
-                s1++, one--;
-
-            ans=min(ans,s0+one);
-            ans=min(ans,s1+zero);
+            int x;
+            cin>>x;
+            v.pb(x);
         }
 
-        cout<<ans<<NL;
+        for(int i=0;i<n;i++)
+        {
+            if(i==0 || i==n-1 || v[i-1]<v[i]!=v[i]<v[i+1])
+                ans.pb(v[i]);
+        }
+
+        cout<<ans.size()<<NL;
+        FOR(i,ans.size())
+        ans[i]<<" ";
+
     }
-
 }
 

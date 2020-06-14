@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
+
 #define ll          long long
+#define ull         unsigned long long
 #define pb          push_back
 #define mp          make_pair
 #define ff          first
@@ -74,39 +76,56 @@ ll lcm(ll a,ll b)
 
 }
 
+bool prime[10000001];
+vector<int>pl;
+
+void sieve()
+{
+    int maxx=10000000;
+    memset(prime,true,sizeof(prime));
+
+    prime[0]=prime[1]=false;
+
+    for(int i=4;i<=maxx;i+=2)
+        prime[i]=false;
+
+    for(int i=3; i*i<=maxx; i+=2)
+    {
+        if(prime[i]==true)
+        {
+            for(int j=i*i; j<=maxx; j+=2*i)
+                prime[j]=false;
+        }
+    }
+    pl.pb(2);
+    for(int i=3;i<=maxx;i+=2)
+        if(prime[i])
+        pl.pb(i);
+
+}
+
+
 int main()
 {
-    fast
+    //fast
+    sieve();
     int t;
-    cin>>t;
-    int ans=0,kount=0;
-    while(t--)
+    scanf("%d",&t);
+
+    FOR(i,t)
     {
-        string s;
-        cin>>s;
-        int zero=0,one=0,s0=0,s1=0;
+        int n,k=0;
+        scanf("%d",&n);
 
-        FOR(i,s.size())
+        for(int j=0;j<pl.size();j++)
         {
-            if(s[i]=='0')
-                zero++;
-            else
-                one++;
+            if(pl[j]>n)break;
+            if(pl[j]<=n and pl[j]<=(n-pl[j]) and prime[pl[j]] and prime[n-pl[j]] )
+              {
+                  k++;
+              }
         }
-        int ans=min(zero,one);
-
-        FOR(i,s.size())
-        {
-            if(s[i]=='0')
-                s0++, zero--;
-            else
-                s1++, one--;
-
-            ans=min(ans,s0+one);
-            ans=min(ans,s1+zero);
-        }
-
-        cout<<ans<<NL;
+        printf("Case %d: %d\n",i+1,k);
     }
 
 }

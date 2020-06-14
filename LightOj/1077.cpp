@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
+
 #define ll          long long
+#define ull         unsigned long long
 #define pb          push_back
 #define mp          make_pair
 #define ff          first
@@ -78,35 +80,16 @@ int main()
 {
     fast
     int t;
-    cin>>t;
-    int ans=0,kount=0;
-    while(t--)
+    scanf("%d",&t);
+
+    FOR(i,t)
     {
-        string s;
-        cin>>s;
-        int zero=0,one=0,s0=0,s1=0;
+        ll a1,a2,b1,b2;
+        scanf("%lld %lld %lld %lld",&a1,&a2,&b1,&b2);
 
-        FOR(i,s.size())
-        {
-            if(s[i]=='0')
-                zero++;
-            else
-                one++;
-        }
-        int ans=min(zero,one);
+        ll ans=gcd(abs(a1-b1),abs(a2-b2))+1;
 
-        FOR(i,s.size())
-        {
-            if(s[i]=='0')
-                s0++, zero--;
-            else
-                s1++, one--;
-
-            ans=min(ans,s0+one);
-            ans=min(ans,s1+zero);
-        }
-
-        cout<<ans<<NL;
+        printf("Case %d: %lld\n",i+1,ans);
     }
 
 }
