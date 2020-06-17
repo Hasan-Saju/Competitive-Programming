@@ -79,32 +79,35 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
-    int t;
-    cin>>t;
+    map<ll,ll>mp;
+    mp[1]=1;
 
+    for(ll i=2;i<1e18+10;i*=2)
+    {
+        mp[i]= mp[i/2]*2+1;
+    }
+
+    ll t;
+    cin>>t;
     while(t--)
     {
-        int n;
+        ll n,ans=0;
         cin>>n;
-        vi v,ans;
-        FOR(i,n)
+        ll i=0;
+        while(n>0)
         {
-            int x;
-            cin>>x;
-            v.pb(x);
+            if(n%2==1)
+                ans+=mp[pow(2,i)];
+            i++;
+            n/=2;
         }
-
-        for(int i=0;i<n;i++)
-        {
-            if(i==0 || i==n-1 || v[i-1]<v[i]!=v[i]<v[i+1])
-                ans.pb(v[i]);
-        }
-
-        cout<<ans.size()<<NL;
-        FOR(i,ans.size())
-        cout<<ans[i]<<" ";
-        cout<<NL;
-
+        cout<<ans<<NL;
     }
+
+
+
+
+
+
 }
 

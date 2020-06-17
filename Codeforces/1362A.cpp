@@ -78,33 +78,46 @@ ll lcm(ll a,ll b)
 
 int main()
 {
-    fast
-    int t;
+   // fast
+    ll t;
     cin>>t;
-
     while(t--)
     {
-        int n;
-        cin>>n;
-        vi v,ans;
-        FOR(i,n)
+        ll a,b;
+        cin>>a>>b;
+        ll gun=max(a,b)/min(a,b);
+        if(gun==0 || max(a,b)%min(a,b)!=0)
         {
-            int x;
-            cin>>x;
-            v.pb(x);
+            cout<<"-1"<<NL;
+            continue;
         }
 
-        for(int i=0;i<n;i++)
+        ll k=0;
+        while(gun!=1)
         {
-            if(i==0 || i==n-1 || v[i-1]<v[i]!=v[i]<v[i+1])
-                ans.pb(v[i]);
+            if(gun%8==0)
+            gun/=8;
+            else if(gun%4==0)
+            gun/=4;
+            else if(gun%2==0)
+            gun/=2;
+            else break;
+            k++;
+
+
+            if(gun==1)break;
         }
 
-        cout<<ans.size()<<NL;
-        FOR(i,ans.size())
-        cout<<ans[i]<<" ";
-        cout<<NL;
+        if(gun==1)
+        {
+            cout<<k<<NL;
+        }
+        else
+            cout<<"-1"<<NL;
+
+
 
     }
+
 }
 

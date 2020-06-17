@@ -81,29 +81,21 @@ int main()
     fast
     int t;
     cin>>t;
-
     while(t--)
     {
-        int n;
-        cin>>n;
-        vi v,ans;
-        FOR(i,n)
+        string s;
+        cin>>s;
+        string ans="";
+        ans+=s[0];
+        for(int i=1;i<s.size()-1;i++)
         {
-            int x;
-            cin>>x;
-            v.pb(x);
+            if(s[i]==s[i+1])
+                ans+=s[i],i++;
+
         }
-
-        for(int i=0;i<n;i++)
-        {
-            if(i==0 || i==n-1 || v[i-1]<v[i]!=v[i]<v[i+1])
-                ans.pb(v[i]);
-        }
-
-        cout<<ans.size()<<NL;
-        FOR(i,ans.size())
-        ans[i]<<" ";
-
+        ans+=s[s.size()-1];
+        cout<<ans<<NL;
     }
+
 }
 

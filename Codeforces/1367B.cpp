@@ -81,30 +81,27 @@ int main()
     fast
     int t;
     cin>>t;
-
     while(t--)
     {
-        int n;
+        int n,k=0,even=0,odd=0;
         cin>>n;
-        vi v,ans;
+        vi v;
+
         FOR(i,n)
         {
             int x;
             cin>>x;
+            if(x%2==0)even++;
+            else odd++;
             v.pb(x);
+            if(i%2!=x%2)k++;
         }
 
-        for(int i=0;i<n;i++)
-        {
-            if(i==0 || i==n-1 || v[i-1]<v[i]!=v[i]<v[i+1])
-                ans.pb(v[i]);
-        }
-
-        cout<<ans.size()<<NL;
-        FOR(i,ans.size())
-        cout<<ans[i]<<" ";
-        cout<<NL;
+            if(k%2==0 and ( (n%2==0 and even==odd)|| (n%2==1 and even==odd+1)) )cout<<k/2<<NL;
+             else
+            cout<<"-1\n";
 
     }
+
 }
 

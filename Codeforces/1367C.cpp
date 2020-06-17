@@ -76,35 +76,80 @@ ll lcm(ll a,ll b)
 
 }
 
+
+const int N=200005;
+int ara[N];
+
+
+
 int main()
 {
     fast
     int t;
     cin>>t;
 
+
     while(t--)
     {
-        int n;
-        cin>>n;
-        vi v,ans;
-        FOR(i,n)
+        vi v;
+
+        int n,k,ans=0;
+        string s;
+
+        cin>>n>>k>>s;
+
+        v.pb(0);
+        for(int i=0; i<s.size(); i++)
+            if(s[i]=='1')
+                v.pb(i+1);
+        v.pb(n+1);
+
+        if(v.size()==2)
         {
-            int x;
-            cin>>x;
-            v.pb(x);
+            for(int i=1; i<=n; i+=k+1)
+                ans++;
+            cout<<ans<<NL;
+            continue;
         }
 
-        for(int i=0;i<n;i++)
+        //cout<<;
+        for(int i=0; i<v.size()-1; i++)
         {
-            if(i==0 || i==n-1 || v[i-1]<v[i]!=v[i]<v[i+1])
-                ans.pb(v[i]);
+            int left,right;
+            if(v[i]==0)
+            {
+                left=0;
+                right=v[i+1]-k;
+            }
+
+            else if(v[i+1]==n+1)
+            {
+                left=v[i]+k;
+                right=n+1;
+            }
+
+            else
+            {
+                left=v[i]+k;
+                right=v[i+1]-k;
+            }
+
+
+            int gap=right-left-1;
+            // cout<<v[i]<<" "<<i<<" "<<left<<" "<<right<<" "<<gap<<NL;
+
+            if(left>=right || gap<=0)
+                continue;
+
+            for(int j=1; j<=gap; j+=(k+1))
+                ans++;
+            //cout<<NL<<ans<<" ans "<<NL;
+
         }
 
-        cout<<ans.size()<<NL;
-        FOR(i,ans.size())
-        cout<<ans[i]<<" ";
-        cout<<NL;
+        cout<<ans<<NL;
 
     }
+
 }
 

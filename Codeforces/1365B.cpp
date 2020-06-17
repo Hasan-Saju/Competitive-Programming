@@ -81,30 +81,35 @@ int main()
     fast
     int t;
     cin>>t;
-
     while(t--)
     {
-        int n;
+        vi f,temp;
+        int n,zero=0,one=0;
         cin>>n;
-        vi v,ans;
+
         FOR(i,n)
         {
             int x;
             cin>>x;
-            v.pb(x);
+            f.pb(x);
         }
-
-        for(int i=0;i<n;i++)
+        FOR(i,n)
         {
-            if(i==0 || i==n-1 || v[i-1]<v[i]!=v[i]<v[i+1])
-                ans.pb(v[i]);
+            int x;
+            cin>>x;
+            if(x==0)zero=1;
+            else one=1;
         }
 
-        cout<<ans.size()<<NL;
-        FOR(i,ans.size())
-        cout<<ans[i]<<" ";
-        cout<<NL;
+        temp=f;
+        sort(temp.begin(),temp.end());
+
+        if( (zero and one) || (zero!=one and temp==f))
+            cout<<"Yes"<<NL;
+        else
+            cout<<"No"<<NL;
 
     }
+
 }
 
