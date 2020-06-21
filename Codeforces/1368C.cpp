@@ -79,6 +79,16 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
-    cout<<gcd(15,30);
+    int n;
+    cin>>n;
+    cout<<(n+1)*3+1<<NL;
 
+    for(int i=0;i<=n;i++)
+    {
+        cout<<i<<" "<<i<<NL;
+        cout<<i<<" "<<i+1<<NL;
+        cout<<i+1<<" "<<i<<NL;
+    }
+    cout<<n+1<<" "<<n+1;
 }
+

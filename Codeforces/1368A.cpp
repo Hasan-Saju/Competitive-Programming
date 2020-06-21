@@ -79,6 +79,28 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
-    cout<<gcd(15,30);
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+        ll a,b,n;
+        cin>>a>>b>>n;
+        ll step=0;
+         ll big=max(a,b);
+            ll small=min(a,b);
+
+        while(small<=n and big<=n)
+        {
+            small+=big;
+            big=big;
+            a=small,b=big;
+            small=min(a,b);
+            big=max(a,b);
+            step++;
+           // cout<<small<<" "<<big<<NL;
+        }
+        cout<<step<<NL;
+    }
 
 }
+

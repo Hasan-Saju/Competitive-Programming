@@ -79,6 +79,32 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
-    cout<<gcd(15,30);
+    ll k;
+    cin>>k;
+
+    string s="codeforces";
+
+    int val[10]={1,1,1,1,1,1,1,1,1,1};
+
+    ll prod=1;
+
+    while(prod<k)
+    {
+        for(int i=0;i<10;i++)
+        {
+            val[i]++;
+            prod=prod/(val[i]-1);
+            prod*=val[i];
+
+            if(prod>=k)break;
+        }
+    }
+
+    for(int i=0;i<10;i++)
+        cout<<string(val[i],s[i]);
+
+
+
 
 }
+

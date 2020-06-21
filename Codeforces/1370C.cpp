@@ -75,10 +75,41 @@ ll lcm(ll a,ll b)
     return a*b/gcd(a,b);
 
 }
+bool prime(ll n)
+{
+    bool flag=true;
+    for(ll i=2; i<=sqrt(n); i++)
+        if(n%i==0)
+        {
+            flag=false;
+            break;
+        }
+    return flag;
+}
+
 
 int main()
 {
     fast
-    cout<<gcd(15,30);
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+        ll n,flag=0;
+        cin>>n;
+
+        if(n==1)
+            cout<<"FastestFinger"<<NL;
+        else if(n==2)
+            cout<<"Ashishgup"<<NL;
+       else  if((n&(n-1))==0)
+            cout<<"FastestFinger"<<NL;
+        else if(n%2==0 and prime(n/2))
+                cout<<"FastestFinger"<<NL;
+        else
+            cout<<"Ashishgup"<<NL;
+
+    }
 
 }
+

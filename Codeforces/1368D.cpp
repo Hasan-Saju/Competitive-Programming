@@ -79,6 +79,30 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
-    cout<<gcd(15,30);
+    ll n;
+    cin>>n;
+
+    vector<ll>v;
+    vector<ll>vand;
+
+    ll x;
+    cin>>x;
+    v.pb(x);
+    vand.pb(x);
+
+    FOR(i,n-1)
+    {
+        cin>>x;
+        x=x|v[i-1];
+        v.pb(x);
+    }
+
+    ll sum=0;
+    FOR(i,n)
+    {
+        sum+= POW(v[i],2);
+    }
+    cout<<sum;
 
 }
+
