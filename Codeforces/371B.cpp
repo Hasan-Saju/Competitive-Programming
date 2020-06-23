@@ -76,8 +76,46 @@ ll lcm(ll a,ll b)
 
 }
 
+
 int main()
 {
     fast
 
+    ll a,b;
+    cin>>a>>b;
+
+    ll g=gcd(a,b);
+    ll step=0;
+    int impos=0;
+    ll a2=0,a3=0,a5=0,b2=0,b3=0,b5=0;
+
+   while(a%2==0 or a%3==0 or a%5==0)
+   {
+       if(a%2==0)
+        a=a/2,a2++;
+       else if(a%3==0)
+        a=a/3,a3++;
+       else if(a%5==0)
+        a=a/5,a5++;
+   }
+
+
+ while(b%2==0 or b%3==0 or b%5==0)
+   {
+       if(b%2==0)
+        b=b/2,b2++;
+       else if(b%3==0)
+        b=b/3,b3++;
+       else if(b%5==0)
+        b=b/5,b5++;
+   }
+
+   //cout<<a<<" "<<b<<NL;
+   if(a!=b)
+    cout<<"-1";
+   else
+    cout<<abs(a2-b2)+abs(a3-b3)+abs(a5-b5);
+
+
 }
+

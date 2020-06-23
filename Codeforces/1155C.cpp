@@ -79,5 +79,33 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    ll n,m;
+    cin>>n>>m;
+    ll x;
+    cin>>x;
+    ll start=x;
+    ll prev=x;
+    ll g=0;
 
+    FOR(i,n-1)
+    {
+        cin>>x;
+        g=gcd(g,x-prev);
+        prev=x;
+    }
+
+    ll ans=0,ind=0;
+    FOR(i,m)
+    {
+        cin>>x;
+        if(g%x==0)
+            ans=1,ind=i+1;
+
+    }
+    if(ans)
+    {
+        cout<<"YES\n";
+        cout<<start<<" "<<ind;
+    }
+    else cout<<"NO\n";
 }
