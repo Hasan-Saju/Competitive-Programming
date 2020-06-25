@@ -79,4 +79,39 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+        ll n;
+        cin>>n;
+        vector<ll>v;
+        vector<ll>cum[n];
+        FOR(i,n)
+        {
+            ll x;
+            cin>>x;
+            v.pb(x);
+        }
+        ll temp=0;
+        FOR(i,n)
+        {
+            if(i%2==0)
+            temp=temp+(-v[i]);
+            else
+                temp=temp+v[i]
+            cum[n]=temp;
+            if(temp>mx)
+            {
+                mx=temp;
+
+            }
+
+        }
+
+
+
+    }
+
 }
+

@@ -79,4 +79,34 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+        string s;
+        cin>>s;
+        ll pos=0,neg=0;
+
+        FOR(i,s.size())
+        {
+            if(s[i]=='+')pos++;
+            else neg++;
+        }
+
+        ll mn=min(pos,neg);
+        ll ans=2*mn;
+        pos-=mn;
+        neg-=mn;
+        if(pos>0)
+            ans*=pos;
+        else
+        {
+            ll temp=neg*(neg+1);
+            temp=temp/2;
+            temp+=neg;
+            ans*=temp;
+        }
+        cout<<ans<<NL;
+    }
+
 }
