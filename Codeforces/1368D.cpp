@@ -82,27 +82,42 @@ int main()
     ll n;
     cin>>n;
 
-    vector<ll>v;
-    vector<ll>vand;
+    ll binary[21]={0};
 
-    ll x;
-    cin>>x;
-    v.pb(x);
-    vand.pb(x);
-
-    FOR(i,n-1)
-    {
-        cin>>x;
-        x=x|v[i-1];
-        v.pb(x);
-    }
-
-    ll sum=0;
     FOR(i,n)
     {
-        sum+= POW(v[i],2);
+        ll x;
+        cin>>x;
+
+        int ind=0;
+
+        while(x)
+        {
+            if(x&1)
+            {
+                binary[ind]++;
+
+            }
+            x=x>>1;
+            ind++;
+        }
     }
-    cout<<sum;
+
+    ll ans=0;
+    for(int i=0;i<n;i++)
+    {
+        ll val=0;
+        for(int j=0; j<20; j++) //ques constraint
+        {
+            if(binary[j])
+            {
+                val= val+ (1<<j);
+                binary[j]--;
+            }
+        }
+        ans+= val*val;
+    }
+    cout<<ans;
 
 }
 

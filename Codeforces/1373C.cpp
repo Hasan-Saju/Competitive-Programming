@@ -76,6 +76,8 @@ ll lcm(ll a,ll b)
 
 }
 
+int ara[1000005];
+
 int main()
 {
     fast
@@ -85,28 +87,28 @@ int main()
     {
         string s;
         cin>>s;
-        ll pos=0,neg=0;
+        map<int,int>mp;
+        ll highest=LONG_MAX,res=0;
 
+        ll kount=0;
         FOR(i,s.size())
         {
-            if(s[i]=='+')pos++;
-            else neg++;
+            if(s[i]=='-')kount--;
+            else kount++;
+
+            ara[i+1]=kount;
+            if( kount<0 and mp.find(kount)==mp.end() ) mp[kount]=i+1;
+            highest=min(highest,kount);
         }
 
-        ll mn=min(pos,neg);
-        ll ans=2*mn;
-        pos-=mn;
-        neg-=mn;
-        if(pos>0)
-            ans*=pos;
-        else
+        highest=highest*-1;
+
+        for(int i=0;i<highest;i++)
         {
-            ll temp=neg*(neg+1);
-            temp=temp/2;
-            temp+=neg;
-            ans*=temp;
+            res+=mp[-(i+1)];
         }
-        cout<<ans<<NL;
+        res+=s.size();
+        cout<<res<<NL;
     }
 
 }

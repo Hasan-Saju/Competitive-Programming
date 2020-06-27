@@ -79,6 +79,36 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        string s;
+        cin>>s;
+        int one=INT_MAX,zero=-1;
+        FOR(i,n)
+        {
+            if(s[i]=='1')
+            {
+                one=min(one,i);
+            }
+            else
+                zero=max(zero,i);
+        }
+        if(one==INT_MAX || zero==-1)
+            cout<<s<<NL;
+        else
+            for(int i=0; i<n; i++)
+            {
+                if(i>=one and i<zero)
+                    continue;
+                else
+                    cout<<s[i];
+            }
+        cout<<NL;
+    }
 
 }
 
