@@ -12,7 +12,7 @@ void dfs(int s)
 {
     time_in[s] = dfs_timer++;
     color[s] = 1;
-    for (int x : V[s])
+    for (auto x : V[s])
     {
         if (color[x] == 0)
             dfs(x);

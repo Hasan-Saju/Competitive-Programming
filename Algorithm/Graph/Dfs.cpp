@@ -8,7 +8,7 @@ bool vis[N];
 void dfs(int s)
 {
     vis[s]=true;
-    for(int x:V[s])//v[s] er prottek ta element ektar por ekta x a ashte thakbe
+    for(auto x:V[s])//v[s] er prottek ta element ektar por ekta x a ashte thakbe
     {                       //int i=0;i<V[s].size();i++   x=V[s][i];
         if(vis[x]==true)
             continue;
