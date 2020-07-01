@@ -5,8 +5,8 @@ using namespace std;
 #define ull         unsigned long long
 #define pb          push_back
 #define mp          make_pair
-#define ff          first
-#define ss          second
+//#define ff          first
+//#define ss          second
 #define vi          vector<int>
 #define si          set<int>
 #define pi          pair<int,int>
@@ -76,7 +76,6 @@ ll lcm(ll a,ll b)
 
 }
 
-int ara[200006];
 
 int main()
 {
@@ -85,48 +84,35 @@ int main()
     cin>>t;
     while(t--)
     {
-        memset(ara,0,sizeof(ara));
 
         ll n,k;
         cin>>n>>k;
-        vector<ll>q;
+        map<int,int>m;
+
         FOR(i,n)
         {
             ll x;
             cin>>x;
-            ara[x%k]++;
+            m[x%k]++;
         }
 
-        ll temp=0;
-        ll ans=0;
+        ll mx=0;
 
-        while(true)
+        for(auto x:m )
         {
-            bool flag=false;
-
-            int i;
-            for( i=k-1; i>0; i--)
-            {
-                if(ara[i]==0)
-                    continue;
-                else
-                {
-                    ans+= k - (i+temp);
-                    ans++;
-                    flag=true;
-                    ara[i]--;
-                    temp+=2;
-                    if(temp>=k)temp=0;
-                    cout<<i<<" "<<ans<<" "<<temp<<NL;
-                }
-            }
-            i=k-1;
-            if(!flag)
-                break;
+            if(x.first==0)continue;
+            ll temp = k*x.second - x.first;
+            mx=max(mx,temp);
+           // cout<<temp<<" "<<x.first<<" "<<x.second<<NL;
         }
-        cout<<ans<<NL;
 
-
+        if(mx==0)
+            cout<<mx<<NL;
+        else
+            cout<<mx+1<<NL;
     }
+
+
 }
+
 

@@ -4,7 +4,7 @@ using namespace std;
 #define ll          long long
 #define ull         unsigned long long
 #define pb          push_back
-#define emb         emplace_back
+#define emb          emplace_back
 #define mp          make_pair
 #define ff          first
 #define ss          second
@@ -79,5 +79,48 @@ ll lcm(ll a,ll b)
 
 int main()
 {
-    fast
+    //fast
+    int n,k;
+    cin>>n>>k;
+
+    vector<int> alice,bob,both;
+
+    FOR(i,n)
+    {
+        int t,a,b;
+        cin>>t>>a>>b;
+        if(a==1 and b==1)
+            both.emplace_back(t);
+        else if(b==1)
+            bob.emplace_back(t);
+        else if(a==1)
+            alice.emplace_back(t);
+
+    }
+
+    int ans=0;
+
+    if(alice.size()+both.size()<k or bob.size()+both.size()<k)
+    {
+        cout<<"-1";
+        return 0;
+    }
+
+    sort(alice.begin(),alice.end());
+    sort(bob.begin(),bob.end());
+
+    int mn=min(alice.size(),bob.size());
+
+    FOR(i,mn)
+    both.emplace_back(alice[i]+bob[i]);
+
+    sort(both.begin(),both.end());
+
+    FOR(i,k)
+    ans += both[i];
+
+    cout<<ans;
+
+
+
 }

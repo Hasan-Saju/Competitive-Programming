@@ -80,4 +80,41 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    ll n,t;
+    cin>>n>>t;
+
+    vector<ll>v;
+    vector<ll>c(n);
+
+    FOR(i,n)
+    {
+        ll x;
+        cin>>x;
+        v.emb(x);
+    }
+
+    int r=0,sum=0,l=0,mx=-999;
+    int x=0;
+    while(r<n)
+    {
+
+        sum+=v[r];
+        if(sum<=t)
+        {
+            r++ ;
+        }
+        else
+        {
+            mx=max(mx,r-l);
+
+            while(sum>t)
+            sum-=v[l],l++;
+
+        r++;
+
+        }
+    }
+    mx=max(mx,r-l);
+    cout<<mx;
+
 }
