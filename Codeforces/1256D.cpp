@@ -80,5 +80,54 @@ ll lcm(ll a,ll b)
 int main()
 {
     fast
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll n,k;
+        string s;
+        cin>>n>>k>>s;
 
+        vector<ll>v;
+        string ans(n,'1');
+
+        for(ll i=0;i<n;i++)
+        {
+            if(s[i]=='0')
+                v.emb(i+1);
+        }
+
+        ll h=0;
+        for( auto x:v )
+        {
+            if(k==0)
+            {
+                ans[x-1]='0';
+                continue;
+            }
+            ll temp=min(k,x-1-h);
+
+            //cout<<temp<<NL;
+            k-=temp;
+
+            //s.erase(s.begin()+x-1);
+
+            //cout<<"delete"<<NL;
+
+            ll bosha= x-1-temp;
+            ans[bosha]='0';
+            //s.insert(bosha,"0");
+            h++;
+
+
+            //if(k==0)
+            //  break;
+            //cout<<s<<NL;
+
+
+        }
+
+        cout<<ans<<NL;
+    }
 }
+
