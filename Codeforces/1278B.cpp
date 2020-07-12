@@ -10,32 +10,41 @@ using namespace std;
 #define FOR(i,n) for(int i=0;i<n;i++)
 int main()
 {
-    int t,i,j,kount=0;
-    ll a,b,x,y;
+    int t;
     cin>>t;
-    for(i=0;i<t;i++)
+    while(t--)
     {
+        int a,b;
         cin>>a>>b;
-        x=min(a,b);
-        y=max(a,b);
-        kount=0;
-        for(j=1;;j++)
+
+        int diff=abs(b-a);
+        if(diff==0)
+            {
+                cout<<"0"<<"\n";
+                continue;
+            }
+
+        int sum=0;
+        int x=1;
+
+        while(true)
         {
-            kount++;
-            if(x<y)
-            x=x+j;
-            else if(y<x)
-                y=y+j;
-                else if(x==y)break;
+            sum=(x*(x+1))/2;
+            //cout<<sum<<" "<<diff<<"\n";
+            if(sum>=diff and sum%2==diff%2)break;
+            x++;
         }
-        cout<<kount<<endl;
+
+        cout<<x<<"\n";
+
     }
-
-
-
-
-
 }
+
+
+
+
+
+
 
 
 

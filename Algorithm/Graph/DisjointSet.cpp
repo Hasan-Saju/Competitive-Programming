@@ -4,7 +4,7 @@ using namespace std;
 #define Max 100
 
 int parent[Max];
-int size;
+int sizee;
 void makeSet(int n)
 {
     parent[n]=n;
@@ -32,7 +32,7 @@ void Union(int a,int b)
 int main()
 {
 
-    for (int i=0; i < size; i++)
+    for (int i=0; i < sizee; i++)
     {
         makeSet(i);
     }
