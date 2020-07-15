@@ -1,4 +1,4 @@
-.o
-.exe
-.cpp.save
-.c.save
+*.o
+*.exe
+*.cpp.save
+*.c.save
