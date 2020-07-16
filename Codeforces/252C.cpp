@@ -77,47 +77,33 @@ ll lcm(ll a,ll b)
 
 }
 
-ull nCr(ull n, ull r)
-{
-    ull x=max(r,n-r);
-
-    ull u=1,d=1,up,down,ans=1;
-    for( up=n, down=1; up>=x+1 ; up--,down++)
-    {
-        ans*=up;
-        ans/=down;
-    }
-    return ans;
-}
-
-
-
 int main()
 {
     fast
+    ll n,d;
+    cin>>n>>d;
 
-    ull n,m,t,ans=0;
-    cin>>n>>m>>t;
-
-    for(ll b=4; b<=n  ;b++)
+    vector<ll>v;
+    FOR(i,n)
     {
-        ll g=t-b;
-        if(g<1)break;
-
-
-
-        if(g>=1 and g<=m)
-        {
-        //cout<<b<<" "<<g<<NL;
-        ull boy=  nCr(n,b);
-        ull girl= nCr(m,g);
-        ans+= (boy*girl);
-        }
-
-        //cout<<boy*girl<<" "<<ans<<NL;
-        //cout<<"check"<<NL;
+        ll x;
+        cin>>x;
+        v.emb(x);
     }
+    ull ans=0;
+    for(ll i=0; i<n; i++)
+    {
+        ll pos=upper_bound(v.begin(),v.end(),v[i]+d)-v.begin();
+        pos--;
+        pos-=i;
+        if(pos<0)
+            pos=0;
+        // cout<<pos<<NL;
+        ans+= (pos*(pos-1)) /2;
+    }
+
     cout<<ans;
+
 
 }
 
