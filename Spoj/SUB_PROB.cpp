@@ -1,8 +1,3 @@
-/*
-input the refernce string
-the the number of input want to match
-then the pattern strings
-*/
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -108,11 +103,4 @@ int main()
 
 }
 
-///cf 727 E best rabin karp
-///SUB_PROB spoj
 
-
-
-///check
-///Spoj problemm
-///ADACLEAN
