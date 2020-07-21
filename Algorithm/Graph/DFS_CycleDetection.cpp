@@ -34,7 +34,7 @@ int main()
         V[u].push_back(v);
         V[v].push_back(u); //Bi-directional
     }
-    dfs(1);
+    dfs(1,-1);
 }
 
 

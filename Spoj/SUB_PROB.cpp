@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+#define fast        ios_base::sync_with_stdio(false);cin.tie(NULL);
 #define ll  long long
 #define Max 100000+6
 
@@ -43,8 +44,8 @@ void Rabin_Karp()
     for( ll i=1; i<=len1; i++)
     {
 
-        Hash1[i]= (Hash1[i-1]*prime + (s1[i]-'0'+1))%mod1;
-        Hash2[i]= (Hash2[i-1]*prime + (s1[i]-'0'+1))%mod2;
+        Hash1[i]= (Hash1[i-1]*prime + (s1[i]-'!'+1))%mod1;
+        Hash2[i]= (Hash2[i-1]*prime + (s1[i]-'!'+1))%mod2;
     }
 
 
@@ -52,10 +53,11 @@ void Rabin_Karp()
 
 int main()
 {
-
+    fast
     scanf("%s", s1+1);
     len1=strlen(s1+1);
-    cin>>game;
+    scanf("%d",&game);
+    //cin>>game;
 
     Rabin_Karp();
     for(ll i=1; i<=game; i++)
@@ -66,8 +68,8 @@ int main()
 
             for(ll j=1; j<=len2; j++)
             {
-                temp1= (temp1*prime + (s2[j]-'0'+1))%mod1;
-                temp2= (temp2*prime + (s2[j]-'0'+1))%mod2;
+                temp1= (temp1*prime + (s2[j]-'!'+1))%mod1;
+                temp2= (temp2*prime + (s2[j]-'!'+1))%mod2;
             }
 
         pair<ll,ll>gameHash;
@@ -94,9 +96,9 @@ int main()
 
         }
         if(found)
-            cout<<"Y\n";
+            printf("Y\n");
         else
-            cout<<"N\n";
+            printf("N\n");
 
     }
 
