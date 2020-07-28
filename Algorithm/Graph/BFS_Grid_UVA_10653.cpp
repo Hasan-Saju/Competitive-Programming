@@ -118,3 +118,4 @@ int main()
 
 }
 //cf 1130C
+//http://lightoj.com/volume_showproblem.php?problem=1238
