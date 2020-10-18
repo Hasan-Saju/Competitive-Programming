@@ -7,7 +7,8 @@ int dp[6000][6000],vis[6000][6000];
 int lcs(int i,int j)
 {
     if(i>=s1.size() or j>=s2.size()) return 0;
-    if(vis[i][j]) return dp[i][j];
+    if(vis[i][j])
+        return dp[i][j];
 
     vis[i][j] = 1;
 
