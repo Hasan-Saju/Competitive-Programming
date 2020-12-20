@@ -13,23 +13,9 @@ using namespace std;
 #define pi pair<int, int>
 #define FOR(i, n) for (int i = 0; i < n; i++)
 
-#define min3(a, b, c) min(a, min(b, c))
-#define max3(a, b, c) max(a, max(b, c))
-#define min4(a, b, c, d) min(a, min(b, min(c, d)))
-#define max4(a, b, c, d) max(a, max(b, max(c, d)))
-#define max5(a, b, c, d, e) max(max3(a, b, c), max(d, e))
-#define min5(a, b, c, d, e) min(min3(a, b, c), min(d, e))
-
 #define fast                          \
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
-#define SP(x) fixed << setprecision(x)
-#define fWrite freopen("out.txt", "w", stdout); //to write the output in a txt file
-#define fRead freopen("in.txt", "r", stdin);
-#define PI 2 * acos(0.0)
-#define asi cout << "Check" << endl
-#define bye return 0
-#define ok cout << "OK" << endl
 #define NL "\n"
 
 //lower_bound == Shoman othoba prothom boro element ta return korbe//iterator return kore
@@ -79,5 +65,35 @@ ll lcm(ll a, ll b)
 
 int main()
 {
-    fast
+    //    fast
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        string s;
+        cin >> s;
+        int first = 0, third = 0, f = 0, t = 0;
+
+        for (int i = 0; i < s.size(); i++)
+        {
+            if (s[i] == '(')
+                first++;
+            else if (s[i] == '[')
+                third++;
+
+            else if (s[i] == ')')
+            {
+                if (first > 0)
+                    first--, f++;
+            }
+            else if (s[i] == ']')
+            {
+                if (third > 0)
+                    third--, t++;
+            }
+            //cout << "he";
+        }
+
+        cout << f + t << NL;
+    }
 }
