@@ -17,8 +17,8 @@ void calc_z()
         {
             L = i;
             R = i;
-            int in = 0;
-            while(str[R] == str[in] && R<str.size()) R++,in++;
+            //int in = 0;
+            while(str[R] == str[R-L] && R<str.size()) R++,in++;
             z[i] = R - L;
             R--;
         }
@@ -29,8 +29,8 @@ void calc_z()
             else
             {
                 L = i;
-                int in = 0;
-                while(str[R]==str[in] && R<str.size())R++,in++;
+                //int in = 0;
+                while(str[R]==str[R-L] && R<str.size())R++,in++;
                 z[i] = R - L;
                 R--;
             }
