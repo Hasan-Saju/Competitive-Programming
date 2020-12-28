@@ -45,4 +45,5 @@ int main()
     str = pat + "$" + text;
     calc_z();
     for(int i=0;i<str.size();i++)cout<<z[i]<<" ";
+    ///pat size value pailei bingo means matching
 }
