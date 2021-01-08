@@ -22,7 +22,7 @@ using namespace std;
 
 #define fast        ios_base::sync_with_stdio(false);cin.tie(NULL);
 #define SP(x)       fixed<<setprecision(x)
-#define fWrite      freopen("out.txt", "w", stdout);//to write the output in a txt file
+#define fWrite      freopen("1out.txt", "w", stdout);//to write the output in a txt file
 #define fRead       freopen("in.txt", "r", stdin);
 #define PI          2*acos(0.0)
 #define asi         cout<<"Check"<<endl
@@ -79,5 +79,46 @@ ll lcm(ll a,ll b)
 
 int main()
 {
-    fast
+    //fast
+    // fWrite
+    int t;
+    cin>>t;
+    for(int i=1; i<=t; i++)
+    {
+        map<string,int>mp;
+        vector<string>all;
+        bool flag=false;
+
+        int n;
+        cin>>n;
+        for(int j=0; j<n; j++)
+        {
+            string x;
+            cin>>x;
+            mp[x]=1;
+            all.pb(x);
+        }
+
+        for(auto x:all )
+        {
+            x.pop_back();
+            while(x.size()>=1 )
+            {
+                if(mp[x])
+                {
+                    flag=true;
+                    break;
+                }
+                x.pop_back();
+
+            }
+            if(flag)
+                break;
+        }
+        flag ? cout<<"Case "<<i<<": "<<"NO\n" :  cout<<"Case "<<i<<": "<<"YES\n";
+        mp.clear();
+        all.clear();
+
+    }
 }
+

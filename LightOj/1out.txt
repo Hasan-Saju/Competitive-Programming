@@ -1,7 +1,2 @@
-Case 1: 261
-Case 2: 448
-Case 3: 611
-Case 4: 741
-Case 5: 362
-Case 6: 515
-Case 7: 769
+Case 1: NO
+Case 2: YES
