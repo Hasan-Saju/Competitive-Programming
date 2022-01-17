@@ -10,7 +10,7 @@ public:
         cout<<"Bangladesh";
     }
 
-    vector<int> twoSum(vector<int>& nums, int target)
+    vector<int> twoSum(vector<int>& nums)
     {
 
         for(int i=0; i<nums.size(); i++)
@@ -26,6 +26,6 @@ int main()
 {
     Solution obj;
     vector<int>vec = {2,7,11,15};
-    obj.twoSum(vec, 9);
+    obj.twoSum(vec);
 }
 

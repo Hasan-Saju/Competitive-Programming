@@ -28,7 +28,7 @@ public:
 
         for(int i=0;i<neg.size();i++)
         {
-            if( (abs(neg[i])*(i+1)) <= posSum)
+            if( (abs(neg[i])*(i+1)) <posSum)
                 left++;
         }
         cout<<"Sum "<<posSum<<"\n";
@@ -39,30 +39,22 @@ public:
         int sz=neg.size();
         int negInd=0;
 
-        cout<<ans;
          for(int i=0; i<satisfaction.size(); i++)
         {
-
-            if( satisfaction[i]>=0)
+            cout<<ans<<"\n";
+            if( (satisfaction[i]<0 and i<left)  )
             {
-                ans = ans + (start*satisfaction[i]);
-                cout<<start<<" "<<satisfaction[i]<<"u\n";
-                cout<<ans<<"\n";
+                ans += (start*neg[sz-1-negInd]);
+                negInd--;
+                cout<<i<<" "<<neg[i]<<"\n";
                 start++;
             }
-            else if( (satisfaction[i]<0 and i<left)  )
+            else if( satisfaction[i]>=0)
             {
-                ans = ans+ (start*neg[sz-left+negInd]);
-                cout<<start<<" "<<neg[sz-left+negInd]<<"\n";
-                negInd++;
-                cout<<ans<<"\n";
+                ans += (start*satisfaction[i]);
+                cout<<i<<" "<<satisfaction[i]<<"\n";
                 start++;
             }
-
-            else
-                continue;
-
-
         }
 
         cout<<ans;
