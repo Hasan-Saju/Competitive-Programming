@@ -25,17 +25,17 @@ public:
         int m=matrix[0].size();
         bool row=false,col=false;
 
-         print(matrix);
+        print(matrix);
         cout<<"\n";
 
-        for(int i=0;i<m;i++)
+        for(int i=0; i<m; i++)
             if(matrix[0][i]==0)
-                    row=true;
+                row=true;
 
         for(int i=0; i<n; i++)
         {
             if(matrix[i][0]==0)
-                    col=true;
+                col=true;
 
             for(int j=0; j<m; j++)
             {
@@ -68,12 +68,12 @@ public:
 
         if(row)
         {
-            for(int j=0;j<m;j++)
+            for(int j=0; j<m; j++)
                 matrix[0][j]=0;
         }
         if(col)
         {
-              for(int i=0;i<n;i++)
+            for(int i=0; i<n; i++)
                 matrix[i][0]=0;
         }
 
@@ -86,7 +86,7 @@ public:
 int main()
 {
     Solution obj;
-    vector<vector<int> >vec={{1,2,3,4},{5,0,7,8},{0,10,11,12},{13,14,15,0}};
+    vector<vector<int> >vec= {{1,2,3,4},{5,0,7,8},{0,10,11,12},{13,14,15,0}};
     obj.setZeroes(vec);
 }
 
