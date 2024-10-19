@@ -7,53 +7,30 @@ public:
     vector<int> spiralOrder(vector<vector<int>>& matrix)
     {
         vector<int>ans;
-        int l = 0, t = 0, i = 0, j = 0;
+        int left = 0, top = 0, right = matrix[0].size(), bottom = matrix.size();
 
-        int d=matrix.size();
-        int r=matrix[0].size();
-        cout<<"here\n";
-
-        cout<<l<<" "<<r<<" "<<t<<" "<<d<<"\n";
-        while(t<=d and l<=r)
+        while(left<right && top<bottom)
         {
-            for(int i=l,j=t; j<r; j++)
-            {
-                cout<<i<<" "<<j<<"1\n";
-                ans.push_back(matrix[i][j]);
-            }
-            t += 1;
-            for(int i=r-1,j=t; j<d; j++)
-            {
-                cout<<j<<" "<<i<<"2\n";
-                ans.push_back(matrix[j][i]);
-            }
-             d -=1;
+            for(int i=left; i<right; i++)
+                ans.push_back(matrix[top][i]);
+            top += 1;
 
-             if(r<l and d<t)
+            for(int i=top; i<bottom; i++)
+                ans.push_back(matrix[i][right-1]);
+            right -=1;
+
+             if( !(left<right and top<bottom) )
                 break;
 
-            for(int i=d,j=r-2; j>=l; j--)
-            {
-                cout<<i<<" "<<j<<"3\n";
-                ans.push_back(matrix[i][j]);
-            }
+            for(int i=right; i>left ; i--)
+                ans.push_back(matrix[bottom-1][i-1]);
+            bottom-=1;
 
-            r-=1;
-
-            for(int i=d-1,j=l; i>=t; i--)
-            {
-                cout<<i<<" "<<j<<"4\n";
-                ans.push_back(matrix[i][j]);
-            }
-            l+=1;
-            cout<<l<<" "<<r<<" "<<t<<" "<<d<<"\n";
+            for(int i=bottom; i>top; i--)
+                ans.push_back(matrix[i-1][left]);
+            left+=1;
         }
-        cout<<"shesh\n";
 
-        for(auto x: ans)
-        {
-            cout<<x<<" ";
-        }
         return ans;
 
     }
