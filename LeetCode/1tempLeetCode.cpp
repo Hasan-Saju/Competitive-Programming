@@ -1,38 +1,25 @@
 #include<bits/stdc++.h>
 using namespace std;
-
 class Solution
 {
 public:
-    bool mergeTriplets(vector<vector<int>>& triplets, vector<int>& target)
+    void hell()
     {
-        int f=0, s=0, l=0;
-        for(auto vec: triplets)
+        cout<<"Bangladesh";
+    }
+    vector<int> twoSum(vector<int>& nums)
+    {
+        for(int i=0; i<nums.size(); i++)
         {
-            if(vec[0]>target[0] or vec[1]>target[1] or vec[2]>target[2])
-                continue;
-            if(vec[0] == target[0])
-                f=1;
-            if(vec[1] == target[1])
-                s=1;
-            if(vec[2] == target[2])
-                l=1;
-
-            cout<<f<<" "<<s<<" "<<l<<"\n";
+            cout<<nums[i]<<"\n";
         }
-
-        return f&&s&&l ? true:false;
+        hell();
+        return nums;
     }
 };
-
 int main()
 {
     Solution obj;
-    vector<vector<int> >v = {{3,4,5},
-        {4,5,6},
-
-
-    };
-    vector<int>target = {3,2,5};
-    cout<<obj.mergeTriplets(v, target);
+    vector<int>vec = {2,7,11,15};
+    obj.twoSum(vec);
 }
