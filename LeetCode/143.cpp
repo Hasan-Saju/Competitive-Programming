@@ -13,42 +13,37 @@ struct ListNode {
 
 class Solution {
 public:
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        if (list1 == NULL)
-            return list2;
-        if (list2 == NULL)
-            return list1;
+    void reorderList(ListNode* head) {
+        ListNode* tail = head;
+        ListNode* prev = NULL;
+        ListNode* next = NULL;
 
-        ListNode* ptr;
-        if (list1->val < list2->val) {
-            ptr = list1;
-            list1 = list1->next;
+        ListNode* result = head;
+
+        while(tail!=NULL)
+        {
+            cout<<"in";
+            next = tail->next;
+            tail->next = prev;
+            prev = tail;
+            tail = next;
         }
-        else {
-            ptr = list2;
-            list2 = list2->next;
+        cout<<"out \n";
+        tail = prev;
+        cout<<tail->val<<" hkj \n";
+        while(tail!=NULL && head!=NULL)
+        {
+            result->next = tail;
+            result = result->next;
+            cout<<result->val<<"\n";
+            tail = tail->next;
+
+            result->next = head;
+            result = result->next;
+            cout<<result->val<<"\n";
+            head = head->next;
         }
 
-        ListNode* cur = ptr;
-
-        while (list1 && list2) {
-            if (list1->val < list2->val) {
-                cur->next = list1;
-                list1 = list1->next;
-            }
-            else {
-                cur->next = list2;
-                list2 = list2->next;
-            }
-            cur = cur->next;
-        }
-
-        if (list1)
-            cur->next = list1;
-        else if (list2)
-            cur->next = list2;
-
-        return ptr;
     }
 };
 
@@ -84,11 +79,12 @@ int main() {
     ListNode* list2 = createList(arr2, 4);
 
     // Merging the two sorted lists
-    ListNode* mergedList = solution.mergeTwoLists(list1, list2);
+    //ListNode* reorderList =
+    solution.reorderList(list1);
 
     // Printing the merged list
-    cout << "Merged List: ";
-    printList(mergedList);
+    cout << "reorderList: ";
+    //printList(reorderList);
 
     return 0;
 }
