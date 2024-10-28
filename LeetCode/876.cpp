@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -13,51 +13,21 @@ struct ListNode {
 
 class Solution {
 public:
-    void reorderList(ListNode* head) {
-        ListNode* temp = head;
-        ListNode* half = head;
-        ListNode* prev = NULL;
-        while(temp->next && temp->next->next)
+    ListNode* middleNode(ListNode* head) {
+        ListNode* tmp = head;
+        int sizee=0;
+        while(tmp)
         {
-            temp = temp->next->next;
-            half = half->next;
+            tmp = tmp->next;
+            sizee++;
         }
+        sizee/=2;
+        while(sizee)
+            head = head->next, sizee--;
 
-        if(temp->next)
-        half = half->next;
-
-        while(half!=NULL)
-        {
-            temp = half->next;
-            half->next = prev;
-            prev = half;
-            half = temp;
-        }
-        half = prev;
-
-        while(head && half)
-        {
-            temp = head->next;
-            prev = half->next;
-
-            head->next = half;
-            half->next = temp;
-
-            head = temp;
-            half = prev;
-
-        }
-        if(head && head->next)head->next = NULL;
+        return head;
     }
 };
-//1 2 3
-//5 4
-//1 5 2 4 3
-//
-//1 2
-//4 3
-//
-//1 4 2 3
 
 // Helper function to create a linked list from an array
 ListNode* createList(int arr[], int size) {
@@ -91,13 +61,13 @@ int main() {
     ListNode* list2 = createList(arr2, 4);
 
     // Merging the two sorted lists
-    //ListNode* reorderList =
-    solution.reorderList(list1);
+    ListNode* mergedList = solution.middleNode(list1);
 
     // Printing the merged list
-    cout << "reorderList: ";
-    //printList(reorderList);
+    cout << "Merged List: ";
+    printList(mergedList);
 
     return 0;
 }
+
 
