@@ -1,26 +1,28 @@
 #include<bits/stdc++.h>
 using namespace std;
-class Solution
-{
+class Solution {
 public:
-    void hell()
-    {
-        cout<<"Bangladesh";
-    }
-    vector<int> twoSum(vector<int>& nums)
-    {
-        for(int i=0; i<nums.size(); i++)
-        {
-            cout<<nums[i]<<"\n";
+    bool canPlaceFlowers(vector<int>& flowerbed, int n) {
+        int empt = 0;
+
+        for (int i = 0; i < flowerbed.size(); ++i) {
+            if (flowerbed[i] == 0 &&
+                (i == 0 || flowerbed[i - 1] == 0) &&
+                (i == flowerbed.size() - 1 || flowerbed[i + 1] == 0)) {
+
+                flowerbed[i] = 1;
+                ++empt;
+
+                if (empt >= n) return true;
+            }
         }
-        hell();
-        return nums;
+        return empt >= n;
     }
 };
 int main()
 {
     Solution obj;
-    vector<int>vec = {2,7,11,15};
-    obj.twoSum(vec);
+    vector<int>vec = {1,0,1,0,1,0,1};
+    obj.canPlaceFlowers(vec, 1);
 }
 
