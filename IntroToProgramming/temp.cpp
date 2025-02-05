@@ -10,7 +10,15 @@ int add(int x, int y)
 int main()
 {
     int x=10;
-    int y=12;
+    int y=-1;
 
+    cin>>x>>y;
+
+    if(x>=20)
+    {
+        //statements
+        cout<<"1";
+        cout<<"2";
+    }
 
 }
