@@ -12,13 +12,24 @@ int main()
     int x=10;
     int y=-1;
 
-    cin>>x>>y;
+    //cin>>x>>y;
 
-    if(x>=20)
-    {
-        //statements
-        cout<<"1";
-        cout<<"2";
-    }
+   if(x>5)
+   {
+       cout<<"hi\n";
+       cout<<"hi\n";
+       if()
+       {
+
+       }
+   }
+   else if(y>5)
+   {
+
+   }
+   else
+   {
+
+   }
 
 }
