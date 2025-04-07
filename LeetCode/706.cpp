@@ -1,26 +1,35 @@
 #include<bits/stdc++.h>
 using namespace std;
-class Solution
+class MyHashMap
 {
+private:
+    vector<int>mp;
 public:
-    void hell()
+    MyHashMap()
     {
-        cout<<"Bangladesh";
+        mp.resize(1000005,-1);
     }
-    vector<int> twoSum(vector<int>& nums)
+
+    void put(int key, int value)
     {
-        for(int i=0; i<nums.size(); i++)
-        {
-            cout<<nums[i]<<"\n";
-        }
-        hell();
-        return nums;
+        mp[key] = value;
+    }
+
+    int get(int key)
+    {
+        return mp[key];
+    }
+
+    void remove(int key)
+    {
+        mp[key] = -1;
     }
 };
+
 int main()
 {
-    Solution obj;
+    MyHashMap obj;
     vector<int>vec = {2,7,11,15};
-    obj.twoSum(vec);
+    //obj.twoSum(vec);
 }
 
