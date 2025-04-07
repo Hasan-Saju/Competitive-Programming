@@ -2,72 +2,65 @@
 using namespace std;
 class Solution
 {
-private:
-    vector<vector<int>>graph;
-    vector<int>vis;
-    vector<int>dis;
-    int maxDepth(int src)
-    {
-        vis[src] = 1;
-        queue<int>Q;
-        Q.push(src);
-        int mxDepth = INT_MIN;
-        while(!Q.empty())
-        {
-            int x = Q.front();
-            Q.pop();
-
-            for(auto n: graph[x])
-            {
-                //cout<<" in "<<n<<" "<<vis[n]<<endl;
-                if(!vis[n])
-                {
-                    //cout<<"here\n";
-                    vis[n] = 1;
-                    dis[n] = dis[x]+1;
-                    mxDepth = max(mxDepth, dis[n]);
-                    Q.push(n);
-                }
-            }
-        }
-        return mxDepth;
-    }
 public:
     vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges)
     {
-        graph.resize(n);
-        vector<int>depth(n,-1);
-        for(auto edge: edges)
+        if(n==1)
+            return {0};
+        vector<vector<int>>graph(n);
+        for(auto edge:edges)
         {
             graph[edge[0]].push_back(edge[1]);
             graph[edge[1]].push_back(edge[0]);
         }
-        int mnHeight = INT_MAX;
+
+        vector<int>edge_cnt(n,0);
+        queue<int>leaves;
+        //cout<<"test\n";
         for(int i=0; i<n; i++)
         {
-            vis.assign(n, 0);
-            dis.assign(n, 0);
-            depth[i] = maxDepth(i);
-            mnHeight = min(mnHeight, depth[i]);
-            //cout<<depth[i]<<endl;
+            edge_cnt[i] = graph[i].size();
+            if(edge_cnt[i]==1)
+                leaves.push(i);
         }
 
-
-        vector<int>mnHeightTrees;
-        for(int i=0; i<n; i++)
+        //cout<<"ok\n";
+        while(!leaves.empty())
         {
-            if(depth[i]==mnHeight)
-                mnHeightTrees.push_back(i);
-        }
+            if(n<=2)
+            {
+                vector<int>ans;
+                while(!leaves.empty())
+                {
+                    ans.push_back(leaves.front());
+                    leaves.pop();
+                }
+                return ans;
+            }
 
-        return mnHeightTrees;
+            int sizee = leaves.size();
+            for(int i=0; i<sizee; i++)
+            {
+                int x = leaves.front();
+                leaves.pop();
+                --n;
+
+                for(auto n:graph[x])
+                {
+                    edge_cnt[n]--;
+                    if(edge_cnt[n]==1)
+                        leaves.push(n);
+                }
+            }
+        }
+        return {};
     }
 };
 int main()
 {
     Solution obj;
-    vector<vector<int>>vec = {{1,0},{1,2},{1,3}};
-    vector<int>ans = obj.findMinHeightTrees(4, vec);
+    vector<vector<int>>vec = {{1,0},{0,2}};
+    vector<int>ans = obj.findMinHeightTrees(3, vec);
 
     for(auto x:ans)
         cout<<x<<" ";
