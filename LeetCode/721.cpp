@@ -1,48 +1,79 @@
 #include<bits/stdc++.h>
 using namespace std;
+class UnionFind
+{
+    vector<int>parent;
+public:
+    UnionFind(int n)
+    {
+        parent.resize(n,0);
+        for(int i=0; i<n; i++)
+            parent[i]=i;
+    }
+
+    int Find(int represent)
+    {
+        if(represent==parent[represent])
+            return represent;
+        else
+            return parent[represent] = Find(parent[represent]);
+    }
+
+    void Union(int a, int b)
+    {
+        int p1 = Find(a);
+        int p2 = Find(b);
+
+        if(p1==p2)
+        {
+            //cout<<"Already same group";
+        }
+        else
+            parent[p2] = p1;
+    }
+};
 class Solution
 {
 public:
-
     vector<vector<string>> accountsMerge(vector<vector<string>>& accounts)
     {
-        multimap<string,set<string>>ms;
-        for(auto v: accounts)
+        int n = accounts.size();
+        UnionFind uf(n);
+        map<string, int>emailUser;
+        for(int i=0; i<n; i++)
         {
-            int neww = 0;
-            int match = 0;
-            set<string> current, temp;
-            if(ms.find(v[0])==ms.end())
-                neww = 1;
-            else
-                current = ms[v[0]];
-
-            for(int i=1; i<v.size(); i++)
+            for(int j=1; j<accounts[i].size(); j++)
             {
-                if(neww)
-                    ms[v[0]].insert(v[i]);
-                else
+                auto email= accounts[i][j];
+                if(emailUser.count(email))
                 {
-                    if(current.find(v[i])!=current.end())
-                        match = 1;
-                    temp.insert(v[i]);
+                    uf.Union(i, emailUser[email]);
                 }
+                else
+                    emailUser[email] = i;
             }
-            if(match)
-                ms[v[0]].insert(temp.begin(), temp.end());
-            else
-                ms.insert({v[0], temp});
         }
 
-        for(auto m: ms)
+        map<int, vector<string>>emailGroup;
+        for(auto x:emailUser)
         {
-            cout<<m.first<<" : ";
-            for(auto x:m.second)
-            {
-                cout<<x<<" ";
-            }
-            cout<<"\n";
+            int leader = uf.Find(x.second);
+            emailGroup[leader].push_back(x.first);
         }
+
+        vector<vector<string>>res;
+        for(auto group:emailGroup)
+        {
+            auto [leader, emails] = group;
+            sort(emails.begin(), emails.end());
+
+            vector<string>temp;
+            temp.push_back(accounts[leader][0]);
+            temp.insert(temp.end(), emails.begin(), emails.end());
+            res.push_back(temp);
+        }
+
+        return res;
     }
 };
 int main()
@@ -51,6 +82,6 @@ int main()
     vector<vector<string>>vec = {{"John","johnsmith@mail.com","john_newyork@mail.com"},{"John","johnsmith@mail.com","john00@mail.com"},
         {"Mary","mary@mail.com"},{"John","johnnybravo@mail.com"}
     };
-    obj.twoSum(vec);
+    obj.accountsMerge(vec);
 }
 
