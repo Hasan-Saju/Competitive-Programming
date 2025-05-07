@@ -1,44 +1,53 @@
 #include<bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    vector<int> asteroidCollision(vector<int>& asteroids) {
+    vector<int> asteroidCollision(vector<int>& asteroids)
+    {
         stack<int>st;
-        for(int i=0; i<asteroids.size(); i++)
+        for(auto x:asteroids)
         {
-            if(st.empty())
-                st.push(asteroids[i]);
-            else{
-
-                if(abs(asteroids[i])<st.top())
-                    continue;
-                else if(abs(asteroids[i]<st.top()))
+            if(st.empty() or (x>0) or (st.top()<0 and x<0))
+                st.push(x);
+            else
+            {
+                while(!st.empty())
                 {
-                    st.pop();
-                    continue;
-                }
-                else{
-                    while(abs(asteroids[i])>st.top())
+                    if(abs(x)>st.top() and st.top()>0)
+                    {
                         st.pop();
-                    if(st.empty())
-                        st.push(asteroids[i]);
+                        if(st.empty() or st.top()<0)
+                        {
+                            st.push(x);
+                            break;
+                        }
+                    }
+                    else if(abs(x)==st.top() and st.top()>0)
+                    {
+                        st.pop();
+                        break;
+                    }
                     else
-                        continue;
+                        break;
                 }
             }
         }
 
+        vector<int>res;
         while(!st.empty())
         {
-            cout<<st.top()<<"\n";
+            res.push_back(st.top());
             st.pop();
         }
+        reverse(res.begin(), res.end());
+        return res;
     }
 };
 int main()
 {
     Solution obj;
-    vector<int>vec = {5, 10, -5};
+    vector<int>vec = {1,-2,-2,-2};
     obj.asteroidCollision(vec);
 }
 
