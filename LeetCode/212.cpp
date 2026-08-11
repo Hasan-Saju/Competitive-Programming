@@ -3,48 +3,48 @@ using namespace std;
 class Solution
 {
 public:
-    bool isStringFound(vector<vector<char>>& board, string target, int i, int j, int ind)
-    {
-        if(target.size() == ind)
-            return true;
-        else if(i<0 or j<0 or i>=board.size() or j>=board[0].size() or board[i][j]!=target[ind])
-            return false;
-
-        char temp = board[i][j];
-        board[i][j] = '#';
-
-        bool check = isStringFound(board, target, i+1, j, ind+1) ||
-                     isStringFound(board, target, i-1, j, ind+1) ||
-                     isStringFound(board, target, i, j+1, ind+1) ||
-                     isStringFound(board, target, i, j-1, ind+1);
-
-        board[i][j]=temp;
-        return check;
-    }
-
     vector<string> findWords(vector<vector<char>>& board, vector<string>& words)
     {
-        vector<string>result;
-        bool breaker=true;
-        for(auto word:words)
+        vector<string>res;
+        int row = board.size();
+        int col = board[0].size();
+
+        for(string& word:words)
         {
-            breaker=true;
-            for(int i = 0; i < board.size() && breaker; i++)
+            bool flag = false;
+            for(int i=0; i<row and !flag; i++)
             {
-                for(int j = 0; j < board[0].size() && breaker; j++)
+                for(int j=0; j<col; j++)
                 {
-                    if(board[i][j] == word[0] && isStringFound(board, word, i, j, 0))
+                    if(board[i][j]!=word[0])
+                        continue;
+                    if(backtrack(i, j, board, word, 0))
                     {
-                        //cout<<"\ngotIT\n"<<word;
-                        result.push_back(word);
-                        breaker = false;
+                        res.push_back(word);
+                        flag=true;
                         break;
                     }
+
                 }
             }
         }
+        return res;
+    }
 
-        return result;
+    bool backtrack(int row, int col, vector<vector<char>>& board, string& word, int ind)
+    {
+        if(ind==word.size())
+            return true;
+        if(row<0 or col<0 or row>=board.size() or col>=board[0].size() or board[row][col]!=word[ind])
+            return false;
+
+        board[row][col] = '*';
+        bool ret = backtrack(row+1, col, board, word, ind+1) ||
+                   backtrack(row-1, col, board, word, ind+1) ||
+                   backtrack(row, col+1, board, word, ind+1) ||
+                   backtrack(row, col-1, board, word, ind+1);
+        board[row][col] = word[ind];
+        return ret;
     }
 };
 int main()
